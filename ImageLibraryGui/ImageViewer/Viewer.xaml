@@ -1,0 +1,10 @@
+﻿<Window x:Class="ImageLibraryGui.ImageViewer.Viewer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Viewer"
+        MinWidth="350"
+        MinHeight="350">
+    <DockPanel Margin="0">
+        <Image RenderTransformOrigin="0,0" Name="ImageElement" Source="{Binding ImageSource}"/>
+    </DockPanel>
+</Window>

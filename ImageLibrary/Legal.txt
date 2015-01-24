@@ -1,0 +1,54 @@
+﻿Acknowledgements,
+
+UNM Scheme / Digital Processing Library,
+	By Lance R. Williams
+	Many C implementations of formulae (Center of Mass, Hot Image, Dilation, .. to name a few) were adapted to C#.
+	Scheme/Haskell segments (such as in Homework) were recreated from scratch.
+
+Wikipedia (http://en.wikipedia.org/)
+	Formula pseudo code and explanations.
+	Some examples,
+	http://en.wikipedia.org/wiki/Bilinear_filtering
+	http://en.wikipedia.org/wiki/Lanczos_resampling
+	PPM
+	Convolution
+
+Stack Overflow (http://stackoverflow.com/)
+	For code samples and valuable opinions on how to accomplish various task and write formulae.
+	Some examples,
+	http://stackoverflow.com/questions/1176910/finding-specific-pixel-colors-of-a-bitmapimage
+	http://stackoverflow.com/questions/15800827/lanczos-resampling-error?rq=1
+	http://en.wikipedia.org/wiki/Canny_edge_detector
+
+.NET Reference Source Code
+	For some hints on structure and the binary image work.
+
+imageresampler (http://code.google.com/p/imageresampler/)
+	Free C++ Image Library
+	LICENSE http://unlicense.org/
+
+2D FFT of an Image in C# (http://www.codeproject.com/Articles/44166/D-FFT-of-an-Image-in-C)
+	By Dr. Vinayak Ashok Bharadi
+	LICENSE http://www.codeproject.com/info/cpol10.aspx
+	Adapted from library, threaded, and made to use Complex struct
+
+Convolution of Bitmaps (http://www.codeproject.com/Articles/6534/Convolution-of-Bitmaps)
+	By Fred Ackers
+	LICENSE N/A
+	Kernel values taken from this article
+
+Rapid Tables (http://www.rapidtables.com/)
+	For formulas for conversion between different color representations as well as their JS implementations.
+
+FAST-EDGE - A fast edge detection implementation in C.
+	By Benjamin C. Haynor
+	https://code.google.com/p/fast-edge/
+	LICENSE http://opensource.org/licenses/mit-license.php
+	Adapted to C#
+
+Chromium
+	Specifically from,
+	http://src.chromium.org/svn/trunk/src/skia/ext/image_operations.cc
+
+https://code.google.com/p/2dimagefilter/wiki/ImageScaling
+
