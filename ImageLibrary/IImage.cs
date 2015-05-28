@@ -8,7 +8,7 @@ namespace ImageLibrary
     /// Common Image Functionality
     /// </summary>
     /// <typeparam name="Y">Struct that represents a value in the image</typeparam>
-    public interface IImage<Y> : ICollection, ICollection<Y>, IReadOnlyCollection<Y>, IDisposable
+    public interface IImage<Y> : ICollection, ICollection<Y>, IReadOnlyList<Y>, IDisposable
         where Y : struct, IEquatable<Y>
     {
         /// <summary>
