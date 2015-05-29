@@ -14,49 +14,49 @@ namespace ImgTests
         [TestMethod]
         public void TestGenerateBinary()
         {
-            GenerateTest<bool>("GenerateBinary");
+            GenerateTest<bool>(nameof(ImageFactory.GenerateBinary));
         }
 
         [TestMethod]
         public void TestGenerate()
         {
-            GenerateTest<double>("Generate");
+            GenerateTest<double>(nameof(ImageFactory.Generate));
         }
 
         [TestMethod]
         public void TestGenerateComplex()
         {
-            GenerateTest<Complex>("GenerateComplex");
+            GenerateTest<Complex>(nameof(ImageFactory.GenerateComplex));
         }
 
         [TestMethod]
         public void TestGenerateRgb()
         {
-            GenerateTest<RGB>("GenerateRgb");
+            GenerateTest<RGB>(nameof(ImageFactory.GenerateRgb));
         }
 
         [TestMethod]
         public void TestGenerateCmyk()
         {
-            GenerateTest<CMYK>("GenerateCmyk");
+            GenerateTest<CMYK>(nameof(ImageFactory.GenerateCmyk));
         }
 
         [TestMethod]
         public void TestGenerateHsl()
         {
-            GenerateTest<HSL>("GenerateHsl");
+            GenerateTest<HSL>(nameof(ImageFactory.GenerateHsl));
         }
 
         [TestMethod]
         public void TestGenerateHsv()
         {
-            GenerateTest<HSV>("GenerateHsv");
+            GenerateTest<HSV>(nameof(ImageFactory.GenerateHsv));
         }
 
         [TestMethod]
         public void TestGenerateBgra()
         {
-            GenerateTest<BGRA>("GenerateBgra");
+            GenerateTest<BGRA>(nameof(ImageFactory.GenerateBgra));
         }
 
         #region Reflection Based Generic Test
