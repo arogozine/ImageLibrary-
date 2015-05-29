@@ -244,9 +244,9 @@ namespace ImageLibrary.Extensions
             return ApplyFilter(img, filter, false);
         }
 
-        public static IImage<double> ApplyFilter(this IImage<double> img, IImage<double> filter, bool offSet)
+        public static IImage<double> ApplyFilter(this IImage<double> img, IImage<double> filter, bool offset)
         {
-            var complexImage = img.Fft(offSet);
+            var complexImage = img.Fft(offset);
 
             Parallel.For(0, complexImage.Length, i =>
             {

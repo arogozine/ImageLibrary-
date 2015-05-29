@@ -1711,9 +1711,9 @@ namespace ImageLibrary.EdgeDetection
             return Boldt(filename, 17);
         }
 
-        public static Sketch Boldt(String filename, int n)
+        public static Sketch Boldt(string fileName, int n)
         {
-            var image = ImageFactory.Generate(filename)
+            var image = ImageFactory.Generate(fileName)
                 .ZeroCrossings(CrossingMethod.One);
 
             return PoMerge(LinkReplaceCycle(image, n));

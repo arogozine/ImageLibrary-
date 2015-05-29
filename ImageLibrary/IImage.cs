@@ -122,7 +122,7 @@ namespace ImageLibrary
         /// <param name="j">X location</param>
         /// <returns></returns>
         Y this[int i, int j] { get; set; }
-        Y this[int index] { get; set; }
+        new Y this[int index] { get; set; }
 
         /// <summary>
         /// Tell the pixel color representation at location i, for every location in image
