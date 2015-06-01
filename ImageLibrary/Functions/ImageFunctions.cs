@@ -16,7 +16,7 @@ namespace ImageLibrary
         {
             if (images == null)
             {
-                throw new ArgumentNullException("images", "No images were supplied");
+                throw new ArgumentNullException(nameof(images), "No images were supplied");
             }
 
             // Size Check
@@ -30,7 +30,7 @@ namespace ImageLibrary
                 var img = images[i];
 
                 if (img.Height != height || img.Width != width)
-                    throw new ArgumentException("Image Dimensions Don't Match", "images");
+                    throw new ArgumentException("Image Dimensions Don't Match", nameof(images));
             }
 
             //
@@ -69,22 +69,22 @@ namespace ImageLibrary
             return ImageFunctions.Run((a, b) => a * b, images);
         }
 
-        public static IImage<Double> Add(params IImage<Double>[] images)
+        public static IImage<double> Add(params IImage<double>[] images)
         {
             return ImageFunctions.Run((a, b) => a + b, images);
         }
 
-        public static IImage<Double> Subtract(params IImage<Double>[] images)
+        public static IImage<double> Subtract(params IImage<double>[] images)
         {
             return ImageFunctions.Run((a, b) => a - b, images);
         }
 
-        public static IImage<Double> Divide(params IImage<Double>[] images)
+        public static IImage<double> Divide(params IImage<double>[] images)
         {
             return ImageFunctions.Run((a, b) => a / b, images);
         }
 
-        public static IImage<Double> Multiply(params IImage<Double>[] images)
+        public static IImage<double> Multiply(params IImage<double>[] images)
         {
             return ImageFunctions.Run((a, b) => a * b, images);
         }
@@ -125,7 +125,7 @@ namespace ImageLibrary
 
             if (heights.Count() > 1)
             {
-                throw new ArgumentException("Images must be the same height");
+                throw new ArgumentException("Images must be the same height", nameof(images));
             }
 
             // Sum all the widths
@@ -160,7 +160,7 @@ namespace ImageLibrary
         {
             if (images.Select(x => x.Width).Distinct().Count() > 1)
             {
-                throw new ArgumentException("Images must be the same width", "images");
+                throw new ArgumentException("Images must be the same width", nameof(images));
             }
 
             return images
@@ -168,7 +168,7 @@ namespace ImageLibrary
                 .ToArray();
         }
 
-        public static IImage<Double> TopToBottom(params IImage<Double>[] images)
+        public static IImage<double> TopToBottom(params IImage<double>[] images)
         {
             return new Image(
                 images.First().Width, 
@@ -192,7 +192,7 @@ namespace ImageLibrary
                 _topToBottom(images));
         }
 
-        public static IImage<Double> LeftToRight(params IImage<Double>[] images)
+        public static IImage<double> LeftToRight(params IImage<double>[] images)
         {
             return new Image(
                 images.Select(x => x.Width).Sum(),

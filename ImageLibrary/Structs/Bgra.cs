@@ -155,7 +155,7 @@ namespace ImageLibrary
             return this == other;
         }
 
-        public static implicit operator BGRA(Int32 val)
+        public static implicit operator BGRA(int val)
         {
             unchecked
             {
@@ -163,7 +163,7 @@ namespace ImageLibrary
             }
         }
 
-        public static implicit operator Int32(BGRA bgra)
+        public static implicit operator int (BGRA bgra)
         {
             unchecked
             {
@@ -186,7 +186,7 @@ namespace ImageLibrary
             return *((BGRA*)val);
         }
 
-        public static unsafe BGRA AsBgra(Int32* val)
+        public static unsafe BGRA AsBgra(int* val)
         {
             return *((BGRA*)val);
         }

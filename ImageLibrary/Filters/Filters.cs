@@ -208,7 +208,7 @@ namespace ImageLibrary
                 };
         }
 
-        public static IImage<Double> MakeFilter(int width, int height, Func<int, int, double> func)
+        public static IImage<double> MakeFilter(int width, int height, Func<int, int, double> func)
         {
             Func<int, int, double> filterFunc = MakeFilterFunc(width, height, func);
 

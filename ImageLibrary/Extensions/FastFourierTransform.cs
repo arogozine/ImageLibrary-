@@ -209,7 +209,7 @@ namespace ImageLibrary.Extensions
         /// <param name="img">Image to apply FFT to</param>
         /// <param name="shift">Whether to shift (align center) the FFT</param>
         /// <returns>Complex Image of the FFT</returns>
-        public static IImage<Complex> Fft(this IImage<Double> img, bool shift)
+        public static IImage<Complex> Fft(this IImage<double> img, bool shift)
         {
             return new ComplexImage(img.Width, img.Height, ForwardFft(img, shift));
         }
@@ -220,12 +220,12 @@ namespace ImageLibrary.Extensions
         /// <param name="img">Image to apply FFT to</param>
         /// <param name="shift"></param>
         /// <returns>Complex Image of the FFT (Shifted)</returns>
-        public static IImage<Complex> Fft(this IImage<Double> img)
+        public static IImage<Complex> Fft(this IImage<double> img)
         {
             return new ComplexImage(img.Width, img.Height, ForwardFft(img, true));
         }
 
-        public static IImage<Double> InverseFft(this IImage<Complex> image)
+        public static IImage<double> InverseFft(this IImage<Complex> image)
         {
             Complex[] Output = FFT2D(image.Data, image.Width, image.Height, -1);
 

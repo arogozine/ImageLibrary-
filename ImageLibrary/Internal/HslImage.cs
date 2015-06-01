@@ -23,7 +23,7 @@ namespace ImageLibrary
             this.data = data;
         }
 
-        public void ToIndexedBgra(Action<Int32, BGRA> action)
+        public void ToIndexedBgra(Action<int, BGRA> action)
         {
             for (int index = 0; index < this.Data.Length; index++)
             {

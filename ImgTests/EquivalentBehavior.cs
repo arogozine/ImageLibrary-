@@ -231,6 +231,7 @@ namespace ImgTests
             Assert.IsTrue(img.Length == ((ICollection)img).Count);
             Assert.IsTrue(img.Length == ((ICollection<T>)img).Count);
             Assert.IsTrue(img.Length == img.Count());
+            Assert.IsTrue(img.Length == ((IReadOnlyList<T>)img).Count);
 
             T[] data = img.Data;
             Assert.IsTrue(img.Length == data.Length);

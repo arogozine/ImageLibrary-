@@ -27,7 +27,7 @@ namespace ImageLibraryTests
         /// <param name="location">Local To Write To</param>
         public static void WritePpm(this IImage<RGB> img, int depth, string location)
         {
-            CustomOutput.WriteCommon(img.Normalize().MapAcross(x => x * depth), 
+            WriteCommon(img.Normalize().MapAcross(x => x * depth), 
                 depth, 
                 "P3", 
                 location,
@@ -37,7 +37,7 @@ namespace ImageLibraryTests
 
         public static void WritePpm(this IImage<double> img, int depth, string location)
         {
-            CustomOutput.WriteCommon(img.Normalize().MapValue(x => x * depth),
+            WriteCommon(img.Normalize().MapValue(x => x * depth),
                 depth,
                 "P3",
                 location,
@@ -47,7 +47,7 @@ namespace ImageLibraryTests
 
         public static void WritePbm(this IImage<double> img, string location)
         {
-            CustomOutput.WriteCommon(img,
+            WriteCommon(img,
                 null,
                 "P1",
                 location,
@@ -57,7 +57,7 @@ namespace ImageLibraryTests
 
         public static void WritePbm(this IImage<bool> img, string location)
         {
-            CustomOutput.WriteCommon(img,
+            WriteCommon(img,
                 null,
                 "P1",
                 location,
@@ -67,7 +67,7 @@ namespace ImageLibraryTests
 
         public static void WritePgm(this IImage<double> img, int depth, string location)
         {
-            CustomOutput.WriteCommon(img
+            WriteCommon(img
                 .Normalize()
                 .MapValue(x => x * depth), 
                 depth, 

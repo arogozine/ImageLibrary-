@@ -11,16 +11,16 @@ namespace ImgTests
         [TestMethod]
         public void Rows()
         {
-            IImage<Double> image = ImageFactory.Generate(BunnyPath);
+            IImage<double> image = ImageFactory.Generate(BunnyPath);
 
-            ImageRow<Double>[] rows = image.Rows();
+            ImageRow<double>[] rows = image.Rows();
 
             Assert.IsNotNull(rows);
             Assert.IsTrue(rows.Length == image.Height);
 
             for (int i = 0; i < image.Height; i++)
             {
-                ImageRow<Double> row = rows[i];
+                ImageRow<double> row = rows[i];
                 Assert.IsNotNull(row);
                 Assert.IsTrue(row.Count == row.Width);
                 Assert.IsTrue(row.Count == image.Width);
@@ -36,9 +36,9 @@ namespace ImgTests
         [TestMethod]
         public void Cols()
         {
-            IImage<Double> image = ImageFactory.Generate(BunnyPath);
+            IImage<double> image = ImageFactory.Generate(BunnyPath);
 
-            ImageColumn<Double>[] cols = image.Columns();
+            ImageColumn<double>[] cols = image.Columns();
             Assert.IsNotNull(cols);
             Assert.IsTrue(cols.Length == image.Height);
 

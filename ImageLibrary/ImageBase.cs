@@ -146,11 +146,24 @@ namespace ImageLibrary
         public static IImage<Y> Crop<Y>(IImage<Y> img, Func<int, int, Y[], IImage<Y>> func, int x1, int y1, int width, int height)
             where Y : struct, IEquatable<Y>
         {
-            // Negative proportions for crop
-            if (x1 < 0 || y1 < 0 || width < 0 || height < 0)
+            if (x1 < 0)
             {
-                // TODO
-                throw new ArgumentOutOfRangeException("Negative proportion for Crop detected");
+                throw new ArgumentOutOfRangeException(nameof(x1), "Negative proportion for Crop detected");
+            }
+
+            if (y1 < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(y1), "Negative proportion for Crop detected");
+            }
+
+            if (width < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(width), "Negative proportion for Crop detected");
+            }
+
+            if (height < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(height), "Negative proportion for Crop detected");
             }
 
             Y[] newData = new Y[width * height];
@@ -238,9 +251,14 @@ namespace ImageLibrary
         public static IImage<Y> Pad<Y>(IImage<Y> img, Func<int, int, Y[], IImage<Y>> func, int width, int height)
             where Y : struct, IEquatable<Y>
         {
-            if (width < 0 || height < 0)
+            if (width < 0)
             {
-                throw new ArgumentOutOfRangeException("Padding Height and Width Must Be Positive");
+                throw new ArgumentOutOfRangeException(nameof(width), "Padding Height and Width Must Be Positive");
+            }
+
+            if (height < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(height), "Padding Height and Width Must Be Positive");
             }
 
             Y[] newData = new Y[height * width];

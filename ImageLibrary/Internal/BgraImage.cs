@@ -140,11 +140,6 @@ namespace ImageLibrary
         {
             get
             {
-                if (index >= this.data.Length)
-                {
-                    throw new ArgumentOutOfRangeException("index");
-                }
-
                 return this.data[index];
             }
             set

@@ -13,18 +13,18 @@ namespace ImageLibrary
     public struct RGB : IEquatable<RGB>, IFormattable
     {
         [FieldOffset(0)]
-        private Double r;
+        private double r;
 
         [FieldOffset(8)]
-        private Double g;
+        private double g;
 
         [FieldOffset(16)]
-        private Double b;
+        private double b;
 
         /// <summary>
         /// Red
         /// </summary>
-        public Double R
+        public double R
         {
             get { return this.r; }
             set { this.r = value; }
@@ -33,7 +33,7 @@ namespace ImageLibrary
         /// <summary>
         /// Green
         /// </summary>
-        public Double G
+        public double G
         {
             get { return this.g; }
             set { this.g = value; }
@@ -42,7 +42,7 @@ namespace ImageLibrary
         /// <summary>
         /// Blue
         /// </summary>
-        public Double B
+        public double B
         {
             get { return this.b; }
             set { this.b = value; }

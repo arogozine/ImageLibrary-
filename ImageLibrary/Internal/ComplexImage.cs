@@ -50,7 +50,7 @@ namespace ImageLibrary
             return 2.0 / (maximum - minimum);
         }
 
-        public void ToIndexedBgra(Action<Int32, BGRA> rgbaAction)
+        public void ToIndexedBgra(Action<int, BGRA> rgbaAction)
         {
             var data = this.Data;
             double scale = this.Scale();

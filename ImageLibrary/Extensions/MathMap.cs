@@ -85,72 +85,72 @@ namespace ImageLibrary.Extensions
 
         #region Double
 
-        public static IImage<Double> Sqrt(this IImage<Double> image)
+        public static IImage<double> Sqrt(this IImage<double> image)
         {
             return image.MapValue(Math.Sqrt);
         }
 
-        public static IImage<Double> Abs(this IImage<Double> image)
+        public static IImage<double> Abs(this IImage<double> image)
         {
             return image.MapValue(Math.Abs);
         }
 
-        public static IImage<Double> Exp(this IImage<Double> image)
+        public static IImage<double> Exp(this IImage<double> image)
         {
             return image.MapValue(Math.Exp);
         }
 
-        public static IImage<Double> Log10(this IImage<Double> image)
+        public static IImage<double> Log10(this IImage<double> image)
         {
             return image.MapValue(Math.Log10);
         }
 
-        public static IImage<Double> Acos(this IImage<Double> image)
+        public static IImage<double> Acos(this IImage<double> image)
         {
             return image.MapValue(Math.Acos);
         }
 
-        public static IImage<Double> Asin(this IImage<Double> image)
+        public static IImage<double> Asin(this IImage<double> image)
         {
             return image.MapValue(Math.Asin);
         }
 
-        public static IImage<Double> Tan(this IImage<Double> image)
+        public static IImage<double> Tan(this IImage<double> image)
         {
             return image.MapValue(Math.Tan);
         }
 
-        public static IImage<Double> Sin(this IImage<Double> image)
+        public static IImage<double> Sin(this IImage<double> image)
         {
             return image.MapValue(Math.Sin);
         }
 
-        public static IImage<Double> Cos(this IImage<Double> image)
+        public static IImage<double> Cos(this IImage<double> image)
         {
             return image.MapValue(Math.Cos);
         }
 
-        public static IImage<Double> Log(this IImage<Double> image)
+        public static IImage<double> Log(this IImage<double> image)
         {
             return image.MapValue(Math.Log);
         }
 
-        public static IImage<Double> Atan(this IImage<Double> image)
+        public static IImage<double> Atan(this IImage<double> image)
         {
             return image.MapValue(Math.Atan);
         }
 
-        public static IImage<Double> Ceiling(this IImage<Double> image)
+        public static IImage<double> Ceiling(this IImage<double> image)
         {
             return image.MapValue(Math.Ceiling);
         }
 
-        public static IImage<Double> Floor(this IImage<Double> image)
+        public static IImage<double> Floor(this IImage<double> image)
         {
             return image.MapValue(Math.Floor);
         }
 
-        public static IImage<Double> Log(this IImage<Double> image, double baseValue)
+        public static IImage<double> Log(this IImage<double> image, double baseValue)
         {
             return image.MapValue(x => Math.Log(x, baseValue));
         }
@@ -232,27 +232,27 @@ namespace ImageLibrary.Extensions
 
         #endregion
 
-        public static double Max(IImage<Double> img)
+        public static double Max(IImage<double> img)
         {
             return img.Aggregate(Math.Max);
         }
 
-        public static double Max(params Double[] values)
+        public static double Max(params double[] values)
         {
             return values.Aggregate(Math.Max);
         }
 
-        public static double Max(IEnumerable<Double> values)
+        public static double Max(IEnumerable<double> values)
         {
             return values.Aggregate(Math.Max);
         }
 
-        public static double Min(IImage<Double> img)
+        public static double Min(IImage<double> img)
         {
             return img.Aggregate(Math.Min);
         }
 
-        public static double Min(params Double[] values)
+        public static double Min(params double[] values)
         {
             return values.Aggregate(Math.Min);
         }

@@ -399,7 +399,7 @@ namespace ImageLibrary.Extensions
         {
             byte value = boolean ? byte.MaxValue : byte.MinValue;
 
-            return TypeConversion.ToHsl(value, value, value);
+            return ToHsl(value, value, value);
         }
 
         public static RGB ToRgb(bool boolean)
@@ -642,7 +642,7 @@ namespace ImageLibrary.Extensions
         {
             if (images == null)
             {
-                throw new ArgumentNullException("images", "Images passed in are null");
+                throw new ArgumentNullException(nameof(images), "Images passed in are null");
             }
 
             // 0 or 1 image
@@ -705,7 +705,7 @@ namespace ImageLibrary.Extensions
         /// <returns></returns>
         public static IImage<double> Magnitude(this IImage<Complex> image, double scale)
         {
-            Func<Complex, Double> fun =
+            Func<Complex, double> fun =
                 x => Math.Log(1 + x.Magnitude);
 
             // Get Magnitude
@@ -733,7 +733,7 @@ namespace ImageLibrary.Extensions
 
         public static IImage<double> Phase(this IImage<Complex> image)
         {
-            Func<Complex, Double> fun =
+            Func<Complex, double> fun =
                 x => Math.Log(1 + Math.Abs(x.Phase));
 
             var data = FastConvert(image, fun);
@@ -854,7 +854,7 @@ namespace ImageLibrary.Extensions
             return colorImage;
         }
 
-        public static IImage<RGB> FromHslToRgb(IImage<Double> hue, IImage<Double> saturation, IImage<Double> intensity)
+        public static IImage<RGB> FromHslToRgb(IImage<double> hue, IImage<double> saturation, IImage<double> intensity)
         {
             RGB[] result = new RGB[hue.Length];
 
@@ -911,7 +911,7 @@ namespace ImageLibrary.Extensions
             return new BgraImage(blue.Width, blue.Height, data);
         }
 
-        public static IImage<RGB> ToRgb(IImage<Double> red, IImage<Double> green, IImage<Double> blue)
+        public static IImage<RGB> ToRgb(IImage<double> red, IImage<double> green, IImage<double> blue)
         {
             if (red.Width != green.Width || blue.Width != green.Width)
             {
@@ -954,7 +954,7 @@ namespace ImageLibrary.Extensions
             return new RGB() { R = R + d, G = G + d, B = B + d };
         }
 
-        private static X ComplexToX<X>(Complex c, Double scale, Func<double, double, double, X> func)
+        private static X ComplexToX<X>(Complex c, double scale, Func<double, double, double, X> func)
         {
             double x = scale * c.Real;
             double y = scale * c.Imaginary;
@@ -1051,7 +1051,5 @@ namespace ImageLibrary.Extensions
 
             return func(R, G, B);
         }
-
-
     }
 }

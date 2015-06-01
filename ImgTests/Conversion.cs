@@ -64,7 +64,7 @@ namespace ImgTests
         {
             BGRA black = BGRA.Black;
 
-            Int32 blackInt32 = black;
+            int blackInt32 = black;
             UInt32 blackUInt32 = black;
 
             Assert.IsTrue(((BGRA)blackInt32) == black);

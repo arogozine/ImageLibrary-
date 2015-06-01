@@ -17,13 +17,13 @@ namespace ImageLibrary
     internal unsafe class BinaryImage : IImage<Boolean>
     {
         private IntPtr _ptr;
-        private Int32 * data;
-        private Int32 width;
-        private Int32 height;
-        private Int32 length;
-        private Int32 bytesAlloc;
+        private int* data;
+        private int width;
+        private int height;
+        private int length;
+        private int bytesAlloc;
 
-        internal BinaryImage(Int32 width, Int32 height, bool[] data)
+        internal BinaryImage(int width, int height, bool[] data)
         {
             this.width = width;
             this.height = height;
@@ -39,7 +39,7 @@ namespace ImageLibrary
 
             this.bytesAlloc = bytesAlloc;
             this._ptr = Marshal.AllocHGlobal(bytesAlloc);
-            this.data = (Int32*) _ptr.ToPointer();
+            this.data = (int*) _ptr.ToPointer();
 
             //
             for (int i = 0; i < data.Length; i++)
@@ -49,7 +49,7 @@ namespace ImageLibrary
             
         }
 
-        private BinaryImage(Int32 width, Int32 height, IntPtr from, int bytesAlloc)
+        private BinaryImage(int width, int height, IntPtr from, int bytesAlloc)
         {
             this.width = width;
             this.height = height;
@@ -57,7 +57,7 @@ namespace ImageLibrary
 
             this._ptr = Marshal.AllocHGlobal(bytesAlloc);
             NativeMethods.RtlMoveMemory(this._ptr, from, (uint)(bytesAlloc));
-            this.data = (Int32*)_ptr.ToPointer();
+            this.data = (int*)_ptr.ToPointer();
         }
 
 
@@ -100,7 +100,7 @@ namespace ImageLibrary
             return new BinaryImage(this.width, this.height, this._ptr, this.bytesAlloc);
         }
 
-        private static BinaryImage Generate(Int32 width, Int32 height, Boolean[] data)
+        private static BinaryImage Generate(int width, int height, Boolean[] data)
         {
             return new BinaryImage(width, height, data);
         }
@@ -188,7 +188,7 @@ namespace ImageLibrary
             {
                 if (index >= this.length)
                 {
-                    throw new ArgumentOutOfRangeException("index");
+                    throw new ArgumentOutOfRangeException(nameof(index));
                 }
 
                 // Adapted from .NET source code
@@ -198,7 +198,7 @@ namespace ImageLibrary
             {
                 if (index >= this.length)
                 {
-                    throw new ArgumentOutOfRangeException("index");
+                    throw new ArgumentOutOfRangeException(nameof(index));
                 }
 
                 // Adapted from .NET source code

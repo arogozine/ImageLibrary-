@@ -17,19 +17,19 @@ namespace ImageLibrary
         /// Hue
         /// [0.0 - 360.0]
         /// </summary>
-        public Double H { get; set; }
+        public double H { get; set; }
 
         /// <summary>
         /// Saturation
         /// [0.0 - 1.0]
         /// </summary>
-        public Double S { get; set; }
+        public double S { get; set; }
 
         /// <summary>
         /// Value
         /// [0.0 - 1.0]
         /// </summary>
-        public Double V { get; set; }
+        public double V { get; set; }
 
         public static bool operator ==(HSV left, HSV right)
         {

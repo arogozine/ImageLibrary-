@@ -238,7 +238,7 @@ namespace ImgTests
 
             bun.Copy()
                 .Convolve(
-                new Double[][]
+                new double[][]
                 {
                     new[] {-1.0, +1},
                     new[] {+1.0, -1}
@@ -247,11 +247,11 @@ namespace ImgTests
 
             bun.Copy()
                 .Convolve(
-                new Double[][]
+                new double[][]
                 {
-                    new Double[] {1, 1, 1},
-                    new Double[] {1, -8, 1},
-                    new Double[] {1, 1, 1,}
+                    new double[] {1, 1, 1},
+                    new double[] {1, -8, 1},
+                    new double[] {1, 1, 1,}
                 })
                 .WriteImage(Path.Combine(WorkingDirectory, "C Rows and Cols 2"));
         }
@@ -522,8 +522,8 @@ namespace ImgTests
             // Fast Forrier Transform
             IImage<Complex> fft = bun.Fft();
 
-            IImage<Double> realPart = fft.RealPart();
-            IImage<Double> imagPart = fft.ImaginaryPart();
+            IImage<double> realPart = fft.RealPart();
+            IImage<double> imagPart = fft.ImaginaryPart();
 
             Assert.IsFalse(ImageEmpty(realPart));
             Assert.IsFalse(ImageEmpty(imagPart));

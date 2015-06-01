@@ -33,21 +33,21 @@ namespace ImageLibrary
                 (width, height, data) => new BinaryImage(width, height, data));            
         }
 
-        public static IImage<bool> GenerateBinary(Int32 width, Int32 height)
+        public static IImage<bool> GenerateBinary(int width, int height)
         {
             ErrorChecker.CheckWidthHeight(width, height);
 
             return new BinaryImage(width, height, new bool[width*height]);
         }
 
-        public static IImage<bool> GenerateBinary(Int32 width, Int32 height, bool[] data)
+        public static IImage<bool> GenerateBinary(int width, int height, bool[] data)
         {
             ErrorChecker.CheckWidthHeightData(width, height, data);
 
             return new BinaryImage(width, height, data);
         }
 
-        public static IImage<bool> GenerateBinary(Int32 width, Int32 height, IEnumerable<bool> data)
+        public static IImage<bool> GenerateBinary(int width, int height, IEnumerable<bool> data)
         {
             bool[] dataArr = ErrorChecker.CheckWidthHeightData(width, height, data);
 
@@ -78,17 +78,17 @@ namespace ImageLibrary
         {
             ErrorChecker.CheckWidthHeight(width, height);
 
-            return new Image(width, height, new Double[width*height]);
+            return new Image(width, height, new double[width*height]);
         }
 
-        public static IImage<double> Generate(Int32 width, Int32 height, Double[] data)
+        public static IImage<double> Generate(int width, int height, double[] data)
         {
             ErrorChecker.CheckWidthHeightData(width, height, data);
 
             return new Image(width, height, data);
         }
 
-        public static IImage<double> Generate(Int32 width, Int32 height, IEnumerable<Double> data)
+        public static IImage<double> Generate(int width, int height, IEnumerable<double> data)
         {
             double[] dataArr = ErrorChecker.CheckWidthHeightData(width, height, data);
 
@@ -105,21 +105,21 @@ namespace ImageLibrary
         /// <param name="width">Image Width</param>
         /// <param name="height">Image Height</param>
         /// <returns>"Blank" Complex Image</returns>
-        public static IImage<Complex> GenerateComplex(Int32 width, Int32 height)
+        public static IImage<Complex> GenerateComplex(int width, int height)
         {
             ErrorChecker.CheckWidthHeight(width, height);
 
             return new ComplexImage(width, height);
         }
 
-        public static IImage<Complex> GenerateComplex(Int32 width, Int32 height, Complex[] data)
+        public static IImage<Complex> GenerateComplex(int width, int height, Complex[] data)
         {
             ErrorChecker.CheckWidthHeightData(width, height, data);
 
             return new ComplexImage(width, height, data);
         }
 
-        public static IImage<Complex> GenerateComplex(Int32 width, Int32 height, IEnumerable<Complex> data)
+        public static IImage<Complex> GenerateComplex(int width, int height, IEnumerable<Complex> data)
         {
             Complex[] dataArray = ErrorChecker.CheckWidthHeightData(width, height, data);
 
@@ -146,21 +146,21 @@ namespace ImageLibrary
                 (width, height, data) => new RGBImage(width, height, data));
         }
 
-        public static IImage<RGB> GenerateRgb(Int32 width, Int32 height)
+        public static IImage<RGB> GenerateRgb(int width, int height)
         {
             ErrorChecker.CheckWidthHeight(width, height);
 
             return new RGBImage(width, height);
         }
 
-        public static IImage<RGB> GenerateRgb(Int32 width, Int32 height, RGB[] data)
+        public static IImage<RGB> GenerateRgb(int width, int height, RGB[] data)
         {
             ErrorChecker.CheckWidthHeightData(width, height, data);
 
             return new RGBImage(width, height, data);
         }
 
-        public static IImage<RGB> GenerateRgb(Int32 width, Int32 height, IEnumerable<RGB> data)
+        public static IImage<RGB> GenerateRgb(int width, int height, IEnumerable<RGB> data)
         {
             // Input check and convert IEnumerable<RGB> to RGB[]
             RGB[] dataArr = ErrorChecker.CheckWidthHeightData(width, height, data);
@@ -186,21 +186,21 @@ namespace ImageLibrary
                 (width, height, data) => new CmykImage(width, height, data));
         }
 
-        public static IImage<CMYK> GenerateCmyk(Int32 width, Int32 height)
+        public static IImage<CMYK> GenerateCmyk(int width, int height)
         {
             ErrorChecker.CheckWidthHeight(width, height);
 
             return new CmykImage(width, height, new CMYK[width * height]);
         }
 
-        public static IImage<CMYK> GenerateCmyk(Int32 width, Int32 height, CMYK[] data)
+        public static IImage<CMYK> GenerateCmyk(int width, int height, CMYK[] data)
         {
             ErrorChecker.CheckWidthHeightData(width, height, data);
 
             return new CmykImage(width, height, data);
         }
 
-        public static IImage<CMYK> GenerateCmyk(Int32 width, Int32 height, IEnumerable<CMYK> data)
+        public static IImage<CMYK> GenerateCmyk(int width, int height, IEnumerable<CMYK> data)
         {
             CMYK[] dataArr = ErrorChecker.CheckWidthHeightData(width, height, data);
 
@@ -227,21 +227,21 @@ namespace ImageLibrary
                 (width, height, data) => new HslImage(width, height, data));
         }
 
-        public static IImage<HSL> GenerateHsl(Int32 width, Int32 height)
+        public static IImage<HSL> GenerateHsl(int width, int height)
         {
             ErrorChecker.CheckWidthHeight(width, height);
 
             return new HslImage(width, height, new HSL[width * height]);
         }
 
-        public static IImage<HSL> GenerateHsi(Int32 width, Int32 height, HSL[] data)
+        public static IImage<HSL> GenerateHsi(int width, int height, HSL[] data)
         {
             ErrorChecker.CheckWidthHeightData(width, height, data);
 
             return new HslImage(width, height, data);
         }
 
-        public static IImage<HSL> GenerateHsi(Int32 width, Int32 height, IEnumerable<HSL> data)
+        public static IImage<HSL> GenerateHsi(int width, int height, IEnumerable<HSL> data)
         {
             HSL[] dataArr = ErrorChecker.CheckWidthHeightData(width, height, data);
 
@@ -268,21 +268,21 @@ namespace ImageLibrary
                 (width, height, data) => new HsvImage(width, height, data));        
         }
 
-        public static IImage<HSV> GenerateHsv(Int32 width, Int32 height)
+        public static IImage<HSV> GenerateHsv(int width, int height)
         {
             ErrorChecker.CheckWidthHeight(width, height);
 
             return new HsvImage(width, height, new HSV[width * height]);
         }
 
-        public static IImage<HSV> GenerateHsv(Int32 width, Int32 height, HSV[] data)
+        public static IImage<HSV> GenerateHsv(int width, int height, HSV[] data)
         {
             ErrorChecker.CheckWidthHeightData(width, height, data);
 
             return new HsvImage(width, height, data);
         }
 
-        public static IImage<HSV> GenerateHsv(Int32 width, Int32 height, IEnumerable<HSV> data)
+        public static IImage<HSV> GenerateHsv(int width, int height, IEnumerable<HSV> data)
         {
             HSV[] dataArr = ErrorChecker.CheckWidthHeightData(width, height, data);
 
@@ -332,7 +332,7 @@ namespace ImageLibrary
 
         #endregion
 
-        private static unsafe IImage<T> ReadToArray<T>(System.Drawing.Image img, Func<BGRA, T> convColor, Func<BGRA, T> convBlack, Func<Int32, Int32, T[], IImage<T>> generator)
+        private static unsafe IImage<T> ReadToArray<T>(System.Drawing.Image img, Func<BGRA, T> convColor, Func<BGRA, T> convBlack, Func<int, int, T[], IImage<T>> generator)
             where T : struct, IEquatable<T>
         {
             Bitmap bitmap = img as Bitmap ?? new Bitmap(img);
@@ -391,7 +391,7 @@ namespace ImageLibrary
             }
         }
 
-        private static unsafe IImage<T> ReadToArray<T>(string filename, Func<BGRA, T> convColor, Func<BGRA, T> convBlack, Func<Int32, Int32, T[], IImage<T>> generator)
+        private static unsafe IImage<T> ReadToArray<T>(string filename, Func<BGRA, T> convColor, Func<BGRA, T> convBlack, Func<int, int, T[], IImage<T>> generator)
             where T : struct, IEquatable<T>
         {
             ErrorChecker.CheckImagePath(filename);

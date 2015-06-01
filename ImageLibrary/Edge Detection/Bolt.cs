@@ -26,12 +26,12 @@ namespace ImageLibrary.EdgeDetection
     {
         #region Zero Crossings
 
-        public static Sketch ZeroCrossings(this IImage<Double> sp1)
+        public static Sketch ZeroCrossings(this IImage<double> sp1)
         {
             return ZeroCrossings(sp1, CrossingMethod.One);
         }
 
-        public static Sketch ZeroCrossings(this IImage<Double> sp1, CrossingMethod method)
+        public static Sketch ZeroCrossings(this IImage<double> sp1, CrossingMethod method)
         {
             // Convolve with 3 x 3 kernel
             var img1 = sp1.Convolve(

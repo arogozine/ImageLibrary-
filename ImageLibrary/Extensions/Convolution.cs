@@ -75,7 +75,7 @@ namespace ImageLibrary.Extensions
 
         public static IImage<double> EdgeDetect(this IImage<double> img)
         {
-            return img.Convolve(new Double[][]
+            return img.Convolve(new double[][]
             {
                 new[] { -0.125, -0.125, -0.125 },
                 new[] { -0.125, +1.000, -0.125 },
@@ -187,7 +187,7 @@ namespace ImageLibrary.Extensions
 
         public static IImage<double> TriangleBlur(this IImage<double> img)
         {
-            return img.Convolve(new Double[][]
+            return img.Convolve(new double[][]
             {
                 new[] { 0.0625, 0.125, 0.0625 },
                 new[] { 0.1250, 0.250, 0.1250 },

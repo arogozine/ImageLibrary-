@@ -69,7 +69,7 @@ namespace ImageLibrary
             {
                 if (column >= this.width)
                 {
-                    throw new ArgumentOutOfRangeException("column");
+                    throw new ArgumentOutOfRangeException(nameof(column));
                 }
 
                 return this.image[min + column];
@@ -79,7 +79,7 @@ namespace ImageLibrary
             {
                 if (column >= this.width)
                 {
-                    throw new ArgumentOutOfRangeException("column");
+                    throw new ArgumentOutOfRangeException(nameof(column));
                 }
 
                 this.image[min + column] = value;

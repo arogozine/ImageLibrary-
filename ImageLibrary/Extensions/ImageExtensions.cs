@@ -117,7 +117,7 @@ namespace ImageLibrary.Extensions
 
         #region Matrix
 
-        public static Matrix<Double> AsMatrix(this IImage<double> img)
+        public static Matrix<double> AsMatrix(this IImage<double> img)
         {
             return Matrix<double>
                 .Build
@@ -174,7 +174,7 @@ namespace ImageLibrary.Extensions
         /// <param name="img">Old Image</param>
         /// <param name="degree">Degree to rotate by</param>
         /// <returns>Rotated image</returns>
-        public static IImage<Double> Rotate(this IImage<Double> img, double degree)
+        public static IImage<double> Rotate(this IImage<double> img, double degree)
         {
             int width = img.Width;
             int height = img.Height;
@@ -319,8 +319,8 @@ namespace ImageLibrary.Extensions
 
         public static IImage<RGB> Normalize(this IImage<RGB> image)
         {
-            Double max = double.MinValue;
-            Double min = double.MaxValue;
+            double max = double.MinValue;
+            double min = double.MaxValue;
 
             foreach (RGB a in image.Data)
             {
@@ -351,7 +351,7 @@ namespace ImageLibrary.Extensions
                         });
         }
 
-        public static IImage<Double> Erode(this IImage<double> img, double[][] conv)
+        public static IImage<double> Erode(this IImage<double> img, double[][] conv)
         {
             return img
                 .Copy()
@@ -359,7 +359,7 @@ namespace ImageLibrary.Extensions
                 .MapValue((double x) => x == 4 ? 1 : 0);
         }
 
-        public static IImage<Double> Dilate(this IImage<Double> img)
+        public static IImage<double> Dilate(this IImage<double> img)
         {
             return Dilate(img, new double[][]
                             { 
@@ -368,7 +368,7 @@ namespace ImageLibrary.Extensions
                             });
         }
 
-        public static IImage<Double> Dilate(this IImage<Double> img, double[][] conv)
+        public static IImage<double> Dilate(this IImage<double> img, double[][] conv)
         {
             return img
                 .Copy()
@@ -376,7 +376,7 @@ namespace ImageLibrary.Extensions
                 .MapValue((double x) => x > 0 ? 1 : 0);
         }
 
-        public static IImage<Double> Open(this IImage<Double> img)
+        public static IImage<double> Open(this IImage<double> img)
         {
             return Open(img, new double[][] 
                 { 
@@ -385,7 +385,7 @@ namespace ImageLibrary.Extensions
                 });
         }
 
-        public static IImage<Double> Open(this IImage<Double> img, double[][] conv)
+        public static IImage<double> Open(this IImage<double> img, double[][] conv)
         {
             return img
                 .Copy()
@@ -395,7 +395,7 @@ namespace ImageLibrary.Extensions
                 .MapValue((double x) => x > 0 ? 1 : 0);
         }
 
-        public static IImage<Double> Close(this IImage<Double> img)
+        public static IImage<double> Close(this IImage<double> img)
         {
             return Close(img, new double[][] 
                 { 
@@ -404,7 +404,7 @@ namespace ImageLibrary.Extensions
                 });
         }
 
-        public static IImage<Double> Close(this IImage<Double> img, double[][] conv)
+        public static IImage<double> Close(this IImage<double> img, double[][] conv)
         {
             return img
                 .Copy()
@@ -896,7 +896,7 @@ namespace ImageLibrary.Extensions
             int n = (int)(Math.Sqrt(rows * rows + cols * cols) / 2.0);
             var data1 = sp1;
 
-            IImage<Double> sp2 = sp1.Outline(0, 10 * 10 ^ 7 /* 10e7 */);
+            IImage<double> sp2 = sp1.Outline(0, 10 * 10 ^ 7 /* 10e7 */);
             var data2 = sp2;
 
             Parallel.For(0, n, m =>
@@ -1040,7 +1040,7 @@ namespace ImageLibrary.Extensions
 
         #region Convolve
 
-        public static IImage<Double> ConvolveCols(this IImage<Double> image, params double[] kernel)
+        public static IImage<double> ConvolveCols(this IImage<double> image, params double[] kernel)
         {
             double[][] kernel2D = new double[kernel.Length][];
 
@@ -1052,7 +1052,7 @@ namespace ImageLibrary.Extensions
             return Convolve(image, kernel2D);
         }
 
-        public static IImage<Double> ConvolveRows(this IImage<Double> image, params double[] kernel)
+        public static IImage<double> ConvolveRows(this IImage<double> image, params double[] kernel)
         {
             double[][] kernel2D = new double[][]
                 {
@@ -1069,7 +1069,7 @@ namespace ImageLibrary.Extensions
         /// <param name="image">Image to convolve</param>
         /// <param name="kernel">convolution kernel</param>
         /// <returns>Convolution result</returns>
-        public static IImage<Double> Convolve(this IImage<Double> image, double[][] kernel)
+        public static IImage<double> Convolve(this IImage<double> image, double[][] kernel)
         {
             return Convolve(image, kernel, EdgeHandling.Crop);
         }
@@ -1081,7 +1081,7 @@ namespace ImageLibrary.Extensions
         /// <param name="kernel">Convolution kernel</param>
         /// <param name="edgeHandling">Convolution Edge Handling Technique</param>
         /// <returns>Convolved Image</returns>
-        public static IImage<Double> Convolve(this IImage<Double> image, double[][] kernel, EdgeHandling edgeHandling)
+        public static IImage<double> Convolve(this IImage<double> image, double[][] kernel, EdgeHandling edgeHandling)
         {
             // Kernel
             var kernel_height = kernel.Length;
@@ -1095,8 +1095,8 @@ namespace ImageLibrary.Extensions
             int width = image.Width;
             int height = image.Height;
 
-            Func<Int32, Int32> edgeX;
-            Func<Int32, Int32> edgeY;
+            Func<int, int> edgeX;
+            Func<int, int> edgeY;
 
             switch (edgeHandling)
             {
@@ -1122,7 +1122,7 @@ namespace ImageLibrary.Extensions
                     break;
             }
 
-            IImage<Double> conv = new Image(width, height);
+            IImage<double> conv = new Image(width, height);
 
             // Convolution is a general purpose filter effect for images
             // Is a matrix applied to an image and a mathematical operation
@@ -1226,7 +1226,7 @@ namespace ImageLibrary.Extensions
             where T : struct, IEquatable<T>
         {
             if (col < 0 || col >= image.Width)
-                throw new ArgumentOutOfRangeException("col");
+                throw new ArgumentOutOfRangeException(nameof(col));
 
             return new ImageColumn<T>(image, col);
         }
@@ -1260,7 +1260,7 @@ namespace ImageLibrary.Extensions
             where T : struct, IEquatable<T>
         {
             if (row < 0 || row >= img.Height)
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException(nameof(row));
 
             return new ImageRow<T>(img, row);
         }

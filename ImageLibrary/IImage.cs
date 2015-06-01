@@ -128,7 +128,7 @@ namespace ImageLibrary
         /// Tell the pixel color representation at location i, for every location in image
         /// </summary>
         /// <param name="iRgba">Action that is called for every location i</param>
-        void ToIndexedBgra(Action<Int32, BGRA> iRgba);
+        void ToIndexedBgra(Action<int, BGRA> iRgba);
 
         /// <summary>
         /// Returns image as RGB byte array
