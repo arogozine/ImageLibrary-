@@ -1,11 +1,7 @@
-﻿using ImageLibrary.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImageLibrary
 {
@@ -115,7 +111,7 @@ namespace ImageLibrary
             return ImageFunctions.Run((a, b) => a * b, images);
         }
 
-        private static T[] _leftToRight<T>(params IImage<T>[] images)
+        private static T[] _leftToRight<T>(IImage<T>[] images)
             where T : struct, IEquatable<T>
         {
             // Ensure all images are the same height

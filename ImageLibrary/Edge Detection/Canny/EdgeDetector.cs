@@ -1,5 +1,4 @@
-﻿using ImageLibrary;
-using ImageLibrary.Extensions;
+﻿using ImageLibrary.Extensions;
 using System;
 using System.Runtime.CompilerServices;
 
@@ -449,7 +448,7 @@ namespace ImageLibrary.EdgeDetection
                             break;
 
                         default:
-                            throw new ArgumentException("ERROR - direction outside range 0 to 3");
+                            throw new ArgumentException("ERROR - direction outside range 0 to 3", nameof(direction));
                     }
 
                 }
@@ -603,7 +602,7 @@ namespace ImageLibrary.EdgeDetection
             return a <= b ? a : b;
         }
 
-        private static void erode_1d_v(IImage<double> img, IImage<double> img_out)
+        private static void Erode1dV(IImage<double> img, IImage<double> img_out)
         {
             int y_max = img.Height * (img.Width - 2);
             for (int y = 2 * img.Width; y < y_max; y += img.Width)
@@ -619,7 +618,7 @@ namespace ImageLibrary.EdgeDetection
         private static void Erode(IImage<double> img_in, IImage<double> img_scratch, IImage<double> img_out)
         {
             erode_1d_h(img_in, img_scratch);
-            erode_1d_v(img_scratch, img_out);
+            Erode1dV(img_scratch, img_out);
         }
 
         private static void Dilate(IImage<double> img_in, IImage<double> img_scratch, IImage<double> img_out)

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImageLibrary
 {
@@ -52,7 +47,7 @@ namespace ImageLibrary
                 left.K != right.K;
         }
 
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (obj == null || typeof(CMYK) != obj.GetType()) 
                 return false;

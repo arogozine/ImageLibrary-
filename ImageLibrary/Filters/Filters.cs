@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImageLibrary
 {
-    
+
     // The basic model for filtering in the frequency domain
     // where F(u,v): the Fourier transform of the image to be smoothed
     // H(u,v): a filter transfer function

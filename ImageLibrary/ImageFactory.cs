@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
 using System.Numerics;
 using ImageLibrary.Extensions;
-using System.Runtime.InteropServices;
 using System.Diagnostics;
 
 namespace ImageLibrary
@@ -130,7 +128,7 @@ namespace ImageLibrary
 
         #region RGB
 
-        public static IImage<RGB> GenerateRgb(String path)
+        public static IImage<RGB> GenerateRgb(string path)
         {
             return ReadToArray(path,
                 TypeConversion.ToRgb,
@@ -172,7 +170,7 @@ namespace ImageLibrary
 
         #region CMYK
 
-        public static IImage<CMYK> GenerateCmyk(String path)
+        public static IImage<CMYK> GenerateCmyk(string path)
         {
             return ReadToArray(path,
                 TypeConversion.ToCmyk, TypeConversion.ToCmyk,

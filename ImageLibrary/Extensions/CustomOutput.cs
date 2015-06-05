@@ -1,11 +1,7 @@
 ﻿using ImageLibrary;
 using ImageLibrary.Extensions;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImageLibraryTests
 {

@@ -1,12 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ImageLibrary.Extensions
 {
+    /// <summary>
+    /// Adapted from,
+    /// http://www.codeproject.com/Articles/44166/D-FFT-of-an-Image-in-C
+    /// 2D FFT of an Image in C#
+    /// Dr. Vinayak Ashok Bharadi,  20 Jul 2012
+    /// CPOL http://www.codeproject.com/info/cpol10.aspx
+    /// </summary>
     public static class FastFourierTransform
     {
         /// <summary>
@@ -256,12 +260,6 @@ namespace ImageLibrary.Extensions
             return complexImage
                 .InverseFft();
         }
-
-        // Adapted from,
-        // http://www.codeproject.com/Articles/44166/D-FFT-of-an-Image-in-C
-        // 2D FFT of an Image in C#
-        // Dr. Vinayak Ashok Bharadi,  20 Jul 2012
-        // CPOL http://www.codeproject.com/info/cpol10.aspx
 
         public static IImage<double> ApplyFilter(this IImage<double> img, Func<int, int, double> filterFunc)
         {

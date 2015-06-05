@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImageLibrary
 {
@@ -46,7 +40,7 @@ namespace ImageLibrary
                 || item1.L != item2.L;
         }
 
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (obj == null || typeof(HSL) != obj.GetType())
                 return false;

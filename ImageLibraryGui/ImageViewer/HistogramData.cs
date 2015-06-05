@@ -1,11 +1,7 @@
 ﻿using ImageLibrary;
 using ImageLibrary.Extensions;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
@@ -46,7 +42,7 @@ namespace ImageLibraryGui.ImageViewer
                 {
                     this.histogramPoints = value;
 
-                    OnPropertyChanged("HistogramPoints");
+                    OnPropertyChanged(nameof(HistogramPoints));
                 }
             }
         }

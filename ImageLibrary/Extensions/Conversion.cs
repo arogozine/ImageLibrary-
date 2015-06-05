@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ImageLibrary.Extensions
 {
+    /// <summary>
+    /// Formulas taken from,
+    /// http://www.rapidtables.com/convert/color/
+    /// </summary>
     public static class TypeConversion
     {
         #region HSVToX
@@ -17,12 +18,7 @@ namespace ImageLibrary.Extensions
         {
             return ToRgb(ToBgra(hsv));
         }
-
-        /// <summary>
-        /// http://www.rapidtables.com/convert/color/hsv-to-rgb.htm
-        /// </summary>
-        /// <param name="hsv"></param>
-        /// <returns></returns>
+        
         public static BGRA ToBgra(this HSV hsv)
         {
             double H = hsv.H;
@@ -97,22 +93,12 @@ namespace ImageLibrary.Extensions
         #endregion
 
         #region HSLToX
-
-        /// <summary>
-        /// http://www.rapidtables.com/convert/color/hsl-to-rgb.htm
-        /// </summary>
-        /// <param name="hsl"></param>
-        /// <returns></returns>
+        
         public static RGB ToRgb(this HSL hsl)
         {
             return ToRgb(hsl.H, hsl.S, hsl.L);
         }
-
-        /// <summary>
-        /// http://www.rapidtables.com/convert/color/hsl-to-rgb.htm
-        /// </summary>
-        /// <param name="hsl"></param>
-        /// <returns></returns>
+        
         public static BGRA ToBgra(this HSL hsl)
         {
             const double oneHalf = 1.0 / 2.0;
@@ -210,7 +196,7 @@ namespace ImageLibrary.Extensions
         }
 
         /// <summary>
-        /// Assumption: (R G B) in [0.0 - 255.0 ]
+        /// Assumption: (R G B) in [0.0 - 255.0]
         /// </summary>
         /// <param name="rgb"></param>
         /// <returns></returns>
@@ -224,12 +210,7 @@ namespace ImageLibrary.Extensions
                 G = (byte)rgb.G
             };
         }
-
-        /// <summary>
-        /// http://www.rapidtables.com/convert/color/rgb-to-hsl.htm
-        /// </summary>
-        /// <param name="rgb"></param>
-        /// <returns></returns>
+        
         public static HSL ToHsl(this RGB rgb)
         {
             return ToHsl(rgb.R, rgb.G, rgb.B);
@@ -276,12 +257,7 @@ namespace ImageLibrary.Extensions
         #endregion
 
         #region BgraToX
-
-        /// <summary>
-        /// http://www.rapidtables.com/convert/color/rgb-to-hsl.htm
-        /// </summary>
-        /// <param name="pixel"></param>
-        /// <returns></returns>
+        
         public static HSL ToHsl(this BGRA pixel)
         {
             return ToHsl(pixel.R, pixel.G, pixel.B);
@@ -297,33 +273,23 @@ namespace ImageLibrary.Extensions
             return pixel.R * 0.299 + pixel.G * 0.587 + pixel.B * 0.114;
         }
 
-        /// <summary>
-        /// http://www.rapidtables.com/convert/color/rgb-to-hsv.htm
-        /// </summary>
-        /// <param name="pixel"></param>
-        /// <returns></returns>
         public static HSV ToHsv(this BGRA pixel)
         {
             return ToHsv((double)pixel.R, (double)pixel.G, (double)pixel.B);
         }
 
-        /// <summary>
-        /// http://www.rapidtables.com/convert/color/rgb-to-cmyk.htm
-        /// </summary>
-        /// <param name="pixel"></param>
-        /// <returns></returns>
         public static CMYK ToCmyk(this BGRA pixel)
         {
             // special case for all black (K = 1)
             // to avoid a NaN
             if (pixel == BGRA.Black)
             {
-                return new CMYK() { K = 1.0 };
+                return new CMYK { K = 1.0 };
             }
 
-            double R = (double)pixel.R / 255.0;
-            double G = (double)pixel.G / 255.0;
-            double B = (double)pixel.B / 255.0;
+            double R = pixel.R / 255.0;
+            double G = pixel.G / 255.0;
+            double B = pixel.B / 255.0;
 
             // K = 1-max(R', G', B')
             double K = 1 - (R > G ? (R > B ? R : B) : (G > B ? G : B));
@@ -355,12 +321,12 @@ namespace ImageLibrary.Extensions
 
         public static HSL ToHsl(double grayscale)
         {
-            return TypeConversion.ToHsl(grayscale, grayscale, grayscale);
+            return ToHsl(grayscale, grayscale, grayscale);
         }
 
         public static RGB ToRgb(double grayscale)
         {
-            return new RGB() { R = grayscale, G = grayscale, B = grayscale };
+            return new RGB { R = grayscale, G = grayscale, B = grayscale };
         }
 
         public static Complex ToComplex(double grayscale)
@@ -372,17 +338,17 @@ namespace ImageLibrary.Extensions
         {
             if (grayscale < 0.0)
             {
-                throw new ArgumentException("Value is negative", "grayscale");
+                throw new ArgumentException("Value is negative", nameof(grayscale));
             }
 
             if (grayscale > 255.0)
             {
-                throw new ArgumentException("Value cannot fix into a byte", "grayscale");
+                throw new ArgumentException("Value cannot fix into a byte", nameof(grayscale));
             }
 
             byte grayByte = (byte)grayscale;
 
-            return new BGRA()
+            return new BGRA
             {
                 A = byte.MaxValue,
                 B = grayByte,
@@ -406,7 +372,7 @@ namespace ImageLibrary.Extensions
         {
             byte value = boolean ? byte.MaxValue : byte.MinValue;
 
-            return new RGB() { R = value, G = value, B = value };
+            return new RGB { R = value, G = value, B = value };
         }
 
         public static Complex ToComplex(bool boolean)
@@ -420,7 +386,7 @@ namespace ImageLibrary.Extensions
         {
             byte value = boolean ? byte.MaxValue : byte.MinValue;
 
-            return new BGRA()
+            return new BGRA
             {
                 A = byte.MaxValue,
                 B = value,
@@ -468,19 +434,11 @@ namespace ImageLibrary.Extensions
 
         #region ABCtoX
 
-        /// <summary>
-        /// http://www.rapidtables.com/convert/color/hsl-to-rgb.htm
-        /// </summary>
-        /// <param name="h"></param>
-        /// <param name="s"></param>
-        /// <param name="l"></param>
-        /// <returns></returns>
         public static RGB ToRgb(double h, double s, double l)
         {
             double C = (1 - Math.Abs(2 * l - 1)) * s;
             double X = C * (1 - Math.Abs((h / 60.0) % 2 - 1));
             double m = l - C / 2.0;
-
 
             double R, G, B;
 
@@ -527,9 +485,9 @@ namespace ImageLibrary.Extensions
 
         public static HSV ToHsv(double r, double g, double b)
         {
-            double R = r / (double)byte.MaxValue;
-            double G = g / (double)byte.MaxValue;
-            double B = b / (double)byte.MaxValue;
+            double R = r / byte.MaxValue;
+            double G = g / byte.MaxValue;
+            double B = b / byte.MaxValue;
 
             // Cmax
             var Cmax = (R > B ? R : B);
@@ -571,13 +529,6 @@ namespace ImageLibrary.Extensions
             return new HSV() { H = H, S = S, V = V };
         }
 
-        /// <summary>
-        /// http://www.rapidtables.com/convert/color/rgb-to-hsl.htm
-        /// </summary>
-        /// <param name="r"></param>
-        /// <param name="g"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
         public static HSL ToHsl(double r, double g, double b)
         {
             const double oneHalf = 1.0 / 2.0;
@@ -905,7 +856,7 @@ namespace ImageLibrary.Extensions
             BGRA[] data = new BGRA[blue.Length];
             Parallel.For(0, blue.Length, i =>
             {
-                data[i] = new BGRA() { B = (byte)blue[i], G = (byte)green[i], R = (byte)red[i] };
+                data[i] = new BGRA { B = (byte)blue[i], G = (byte)green[i], R = (byte)red[i] };
             });
 
             return new BgraImage(blue.Width, blue.Height, data);
@@ -982,19 +933,19 @@ namespace ImageLibrary.Extensions
             double Cb = R * -0.16874 + G * -0.33126 + B *  0.50000 + 128;
             double Cr = R *  0.50000 + G * -0.41869 + B * -0.08131 + 128;
 
-            return new YCbCr() { Y = (byte)Y, Cb = (byte)Cb, Cr = (byte)Cr };
+            return new YCbCr { Y = (byte)Y, Cb = (byte)Cb, Cr = (byte)Cr };
         }
 
         public static RGB ToRgb_JPEG(this YCbCr ycbcr)
         {
             return YCbCrToX_JPEG(ycbcr, (r, g, b) =>
-                new RGB() { R = r, G = g, B = b });
+                new RGB { R = r, G = g, B = b });
         }
 
         public static BGRA ToBgra_JPEG(this YCbCr ycbcr)
         {
             return YCbCrToX_JPEG(ycbcr, (r, g, b) =>
-                new BGRA() { R = (byte)r, G = (byte)g, B = (byte)b, A = byte.MaxValue });
+                new BGRA { R = (byte)r, G = (byte)g, B = (byte)b, A = byte.MaxValue });
         }
 
         private static X YCbCrToX_JPEG<X>(YCbCr ycbcr, Func<double, double, double, X> func)
