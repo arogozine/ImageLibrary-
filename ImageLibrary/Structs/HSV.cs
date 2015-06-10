@@ -67,7 +67,7 @@ namespace ImageLibrary
 
         public string ToString(string format, IFormatProvider formatProvider)
         {
-            return String.Format(formatProvider, "HSV [H:{0}, S:{1}, V:{2}]", this.H, this.S, this.V);
+            return string.Format(formatProvider, "HSV [H:{0}, S:{1}, V:{2}]", this.H, this.S, this.V);
         }
     }
 }

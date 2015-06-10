@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+
 namespace ImageLibrary
 {
     /// <summary>
@@ -35,6 +37,10 @@ namespace ImageLibrary
         /// </summary>
         int Length { get; }
         
+        /// <summary>
+        /// Internal Only - Mileage will vary
+        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         Y[] Data { get; }
 
         /// <summary>
@@ -86,8 +92,22 @@ namespace ImageLibrary
         /// <returns>New Upsampled (Vertically) Image</returns>
         IImage<Y> UpsampleRows();
         
+        /// <summary>
+        /// Returns a new image which is downsampled
+        /// </summary>
+        /// <returns></returns>
         IImage<Y> Downsample();
+
+        /// <summary>
+        /// Returns a new image only horizontally downsampled
+        /// </summary>
+        /// <returns></returns>
         IImage<Y> DownsampleCols();
+
+        /// <summary>
+        /// Returns a new image only vertically downsamples
+        /// </summary>
+        /// <returns></returns>
         IImage<Y> DownsampleRows();
 
         /// <summary>
@@ -115,12 +135,18 @@ namespace ImageLibrary
         IImage<Y> Transpose();
 
         /// <summary>
-        /// 
+        /// 2D Location in the image
         /// </summary>
         /// <param name="i">Y location</param>
         /// <param name="j">X location</param>
-        /// <returns></returns>
+        /// <returns>Pixel value at that location</returns>
         Y this[int i, int j] { get; set; }
+
+        /// <summary>
+        /// 1D Location in the image
+        /// </summary>
+        /// <param name="index">Value between 0 and Width * Height - 1</param>
+        /// <returns>Pixel value at that location</returns>
         new Y this[int index] { get; set; }
 
         /// <summary>

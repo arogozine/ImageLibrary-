@@ -40,64 +40,40 @@ namespace ImageLibrary
         }
 
         public IImage<HSV> Transpose()
-        {
-            return ImageBase.Transpose(this, HsvImage.Generate);
-        }
-
+            => ImageBase.Transpose(this, HsvImage.Generate);
+        
         private static HsvImage Generate(int width, int height, HSV[] data)
-        {
-            return new HsvImage(width, height, data);
-        }
-
+            => new HsvImage(width, height, data);
+        
         public IImage<HSV> Upsample()
-        {
-            return ImageBase.Upsample(this, Generate);
-        }
+            => ImageBase.Upsample(this, Generate);        
 
         public IImage<HSV> UpsampleCols()
-        {
-            return ImageBase.UpsampleCols(this, Generate);
-        }
+            => ImageBase.UpsampleCols(this, Generate);
 
         public IImage<HSV> UpsampleRows()
-        {
-            return ImageBase.UpsampleRows(this, Generate);
-        }
-
+            => ImageBase.UpsampleRows(this, Generate);
+        
         public IImage<HSV> Downsample()
-        {
-            return ImageBase.Downsample(this, Generate);
-        }
+            => ImageBase.Downsample(this, Generate);
 
         public IImage<HSV> DownsampleCols()
-        {
-            return ImageBase.DownsampleCols(this, Generate);
-        }
+            => ImageBase.DownsampleCols(this, Generate);
 
         public IImage<HSV> DownsampleRows()
-        {
-            return ImageBase.DownsampleRows(this, Generate); ;
-        }
+            => ImageBase.DownsampleRows(this, Generate);
 
         public IImage<HSV> FlipX()
-        {
-            return ImageBase.FlipX(this, Generate);
-        }
+            => ImageBase.FlipX(this, Generate);
 
         public IImage<HSV> FlipY()
-        {
-            return ImageBase.FlipY(this, Generate);
-        }
+            => ImageBase.FlipY(this, Generate);
 
         public IImage<HSV> FlipXY()
-        {
-            return ImageBase.FlipXY(this, Generate);
-        }
+            => ImageBase.FlipXY(this, Generate);
 
         public IImage<HSV> Crop(System.Drawing.Rectangle rect)
-        {
-            return ImageBase.Crop(this, Generate, rect);
-        }
+            => ImageBase.Crop(this, Generate, rect);
 
         public IImage<HSV> Crop(int x1, int y1, int width, int height)
         {
@@ -165,25 +141,13 @@ namespace ImageLibrary
             }
         }
 
-        public byte[] ToBGR()
-        {
-            return ImageBase.ToRGB(this);
-        }
+        public byte[] ToBGR() => ImageBase.ToRGB(this);
+        
+        public byte[] ToBGRA() => ImageBase.ToRGBA(this);
+        
+        public BGRA[] ToPixelColor() => ImageBase.ToPixelColor(this);
 
-        public byte[] ToBGRA()
-        {
-            return ImageBase.ToRGBA(this);
-        }
-
-        public BGRA[] ToPixelColor()
-        {
-            return ImageBase.ToPixelColor(this);
-        }
-
-        public void CopyTo(Array array, int index)
-        {
-            ImageBase.CopyTo(this, array, index);
-        }
+        public void CopyTo(Array array, int index) => ImageBase.CopyTo(this, array, index);
 
         public int Count
         {
@@ -221,9 +185,7 @@ namespace ImageLibrary
         }
 
         public void CopyTo(HSV[] array, int arrayIndex)
-        {
-            ImageBase.CopyTo(this, array, arrayIndex);
-        }
+            => ImageBase.CopyTo(this, array, arrayIndex);
 
         public bool IsReadOnly
         {

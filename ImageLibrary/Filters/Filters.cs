@@ -28,10 +28,8 @@ namespace ImageLibrary
             return (x < 1.0) ? 1.0 - x : 0.0;
         }
 
-        public static double Box(double x)
-        {
-            return (x >= -0.5 && x <= 0.5) ? 1.0 : 0.0;
-        }
+        public static double Box(double x) 
+            => (x >= -0.5 && x <= 0.5) ? 1.0 : 0.0;
 
         public static double Bell(double x)
         {
@@ -77,10 +75,8 @@ namespace ImageLibrary
         private const double QUADRATIC_SUPPORT = 1.5;
 
         // Dodgson, N., "Quadratic Interpolation for Image Resampling"
-        public static Func<double, double> Quadratic(double r)
-        {
-            return x => QudraticGeneric(x, r);
-        }
+        public static Func<double, double> Quadratic(double r) 
+            => x => QudraticGeneric(x, r);
 
         public static double QudraticGeneric(double t, double R)
         {
@@ -108,22 +104,18 @@ namespace ImageLibrary
             return Math.Sin(x) / x;
         }
 
-        public static double NearestNeighbor(double x)
-        {
-            return Math.Round(x, MidpointRounding.AwayFromZero);
-        }
+        public static double NearestNeighbor(double x) 
+            => Math.Round(x, MidpointRounding.AwayFromZero);
+        
 
         public static Func<double, double> Lanczos(double size)
-        {
-            return x => LanczosKernel(x, size);
-        }
+            => x => LanczosKernel(x, size);
 
         #region Hamming
 
         public static Func<double, double> Hamming(double size)
-        {
-            return x => HammingKernel(x, size);
-        }
+            => x => HammingKernel(x, size);
+        
 
         private static double HammingKernel(double x, double size)
         {
@@ -257,14 +249,12 @@ namespace ImageLibrary
         #region Ideal Filters
 
         public static Func<int, int, double> IdealLowPass(double stddev)
-        {
-            return (x, y) => Math.Sqrt(x * x + y * y) < stddev ? 1.0 : 0.0;
-        }
+            => (x, y) => Math.Sqrt(x * x + y * y) < stddev ? 1.0 : 0.0;
+        
 
         public static Func<int, int, double> IdealHighPass(double stddev)
-        {
-            return (x, y) => Math.Sqrt(x * x + y * y) > stddev ? 1.0 : 0.0;
-        }
+            => (x, y) => Math.Sqrt(x * x + y * y) > stddev ? 1.0 : 0.0;
+        
 
         public static Func<int, int, double> IdealBandPass(double start, double end)
         {

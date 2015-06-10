@@ -72,7 +72,7 @@ namespace ImageLibrary
 
         public string ToString(string format, IFormatProvider formatProvider)
         {
-            return String.Format(formatProvider, "CMYK [C:{0}, M:{1}, Y:{2}, K:{3}]", this.C, this.M, this.Y, this.K);
+            return string.Format(formatProvider, "CMYK [C:{0}, M:{1}, Y:{2}, K:{3}]", this.C, this.M, this.Y, this.K);
         }
     }
 }

@@ -52,9 +52,7 @@ namespace ImageLibrary
         }
 
         public IImage<double> Pad(int width, int height)
-        {
-            return ImageBase.Pad(this, Image.Generate, width, height);
-        }
+            => ImageBase.Pad(this, Image.Generate, width, height);
 
         public unsafe IImage<double> Transpose()
         {
@@ -69,64 +67,40 @@ namespace ImageLibrary
         }
 
         private static Image Generate(int width, int height, double[] data)
-        {
-            return new Image(width, height, data);
-        }
+            => new Image(width, height, data);
 
         public IImage<double> Upsample()
-        {
-            return ImageBase.Upsample(this, Generate);
-        }
+            => ImageBase.Upsample(this, Generate);
 
         public IImage<double> UpsampleCols()
-        {
-            return ImageBase.UpsampleCols(this, Generate);
-        }
+            => ImageBase.UpsampleCols(this, Generate);
 
         public IImage<double> UpsampleRows()
-        {
-            return ImageBase.UpsampleRows(this, Generate);
-        }
+            => ImageBase.UpsampleRows(this, Generate);
 
         public IImage<double> Downsample()
-        {
-            return ImageBase.Downsample(this, Generate);
-        }
+            => ImageBase.Downsample(this, Generate);
 
         public IImage<double> DownsampleCols()
-        {
-            return ImageBase.DownsampleCols(this, Generate);
-        }
+            => ImageBase.DownsampleCols(this, Generate);
 
         public IImage<double> DownsampleRows()
-        {
-            return ImageBase.DownsampleRows(this, Generate); ;
-        }
+            => ImageBase.DownsampleRows(this, Generate);
 
         public IImage<double> FlipX()
-        {
-            return ImageBase.FlipX(this, Generate);
-        }
+            => ImageBase.FlipX(this, Generate);
 
         public IImage<double> FlipY()
-        {
-            return ImageBase.FlipY(this, Generate);
-        }
+            => ImageBase.FlipY(this, Generate);
 
         public IImage<double> FlipXY()
-        {
-            return ImageBase.FlipXY(this, Generate);
-        }
+            => ImageBase.FlipXY(this, Generate);
 
         public IImage<double> Crop(System.Drawing.Rectangle rect)
-        {
-            return ImageBase.Crop(this, Generate, rect);
-        }
+            => ImageBase.Crop(this, Generate, rect);
 
         public IImage<double> Crop(int x1, int y1, int width, int height)
-        {
-            return ImageBase.Crop(this, Generate, x1, y1, width, height);
-        }
+            => ImageBase.Crop(this, Generate, x1, y1, width, height);
 
         public int Cols
         {
@@ -190,20 +164,11 @@ namespace ImageLibrary
             }
         }
 
-        public byte[] ToBGR()
-        {
-            return ImageBase.ToRGB(this);
-        }
+        public byte[] ToBGR() => ImageBase.ToRGB(this);
 
-        public byte[] ToBGRA()
-        {
-            return ImageBase.ToRGBA(this);
-        }
+        public byte[] ToBGRA() => ImageBase.ToRGBA(this);
 
-        public BGRA[] ToPixelColor()
-        {
-            return ImageBase.ToPixelColor(this);
-        }
+        public BGRA[] ToPixelColor() => ImageBase.ToPixelColor(this);
 
         public void CopyTo(Array array, int index)
         {

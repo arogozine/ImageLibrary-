@@ -11,17 +11,17 @@ namespace ImageLibrary
         /// <summary>
         /// [16 - 235]
         /// </summary>
-        public Byte Y { get; set; }
+        public byte Y { get; set; }
 
         /// <summary>
         /// [16 - 240]
         /// </summary>
-        public Byte Cb { get; set; }
+        public byte Cb { get; set; }
 
         /// <summary>
         /// [16 - 240]
         /// </summary>
-        public Byte Cr { get; set; }
+        public byte Cr { get; set; }
 
         public static bool operator ==(YCbCr left, YCbCr right)
         {
@@ -64,7 +64,7 @@ namespace ImageLibrary
 
         public string ToString(string format, IFormatProvider formatProvider)
         {
-            return String.Format(formatProvider, "YCbCr [Y:{0}, Cb:{1}, Cr:{2}]", this.Y, this.Cb, this.Cr);
+            return string.Format(formatProvider, "YCbCr [Y:{0}, Cb:{1}, Cr:{2}]", this.Y, this.Cb, this.Cr);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace ImageLibrary
     /// <summary>
     /// Optimized Implementation of Binary (1 / 0) Image
     /// </summary>
-    internal unsafe class BinaryImage : IImage<Boolean>
+    internal unsafe class BinaryImage : IImage<bool>
     {
         private IntPtr _ptr;
         private int* data;
@@ -39,8 +39,7 @@ namespace ImageLibrary
             for (int i = 0; i < data.Length; i++)
             {
                 this[i] = data[i];
-            }
-            
+            }    
         }
 
         private BinaryImage(int width, int height, IntPtr from, int bytesAlloc)
@@ -53,8 +52,6 @@ namespace ImageLibrary
             NativeMethods.RtlMoveMemory(this._ptr, from, (uint)(bytesAlloc));
             this.data = (int*)_ptr.ToPointer();
         }
-
-
 
         public int Cols
         {
@@ -90,79 +87,49 @@ namespace ImageLibrary
         }
 
         public IImage<bool> Copy()
-        {
-            return new BinaryImage(this.width, this.height, this._ptr, this.bytesAlloc);
-        }
+            => new BinaryImage(this.width, this.height, this._ptr, this.bytesAlloc);
 
-        private static BinaryImage Generate(int width, int height, Boolean[] data)
-        {
-            return new BinaryImage(width, height, data);
-        }
+        private static BinaryImage Generate(int width, int height, bool[] data)
+            => new BinaryImage(width, height, data);
 
         public IImage<bool> Crop(System.Drawing.Rectangle rect)
-        {
-            return ImageBase.Crop(this, BinaryImage.Generate, rect);
-        }
+            => ImageBase.Crop(this, BinaryImage.Generate, rect);
 
         public IImage<bool> Crop(int x1, int y1, int width, int height)
-        {
-            return ImageBase.Crop(this, BinaryImage.Generate, x1, y1, width, height);
-        }
+            => ImageBase.Crop(this, BinaryImage.Generate, x1, y1, width, height);
 
         public IImage<bool> Pad(int width, int height)
-        {
-            return ImageBase.Pad(this, BinaryImage.Generate, width, height);
-        }
+            => ImageBase.Pad(this, BinaryImage.Generate, width, height);
 
         public IImage<bool> Upsample()
-        {
-            return ImageBase.Upsample(this, BinaryImage.Generate);
-        }
+            => ImageBase.Upsample(this, BinaryImage.Generate);
 
         public IImage<bool> UpsampleCols()
-        {
-            return ImageBase.UpsampleCols(this, BinaryImage.Generate);
-        }
+            => ImageBase.UpsampleCols(this, BinaryImage.Generate);
 
         public IImage<bool> UpsampleRows()
-        {
-            return ImageBase.UpsampleRows(this, BinaryImage.Generate);
-        }
+            => ImageBase.UpsampleRows(this, BinaryImage.Generate);
 
         public IImage<bool> Downsample()
-        {
-            return ImageBase.Downsample(this, BinaryImage.Generate);
-        }
+            => ImageBase.Downsample(this, BinaryImage.Generate);
 
         public IImage<bool> DownsampleCols()
-        {
-            return ImageBase.DownsampleCols(this, BinaryImage.Generate);
-        }
+            => ImageBase.DownsampleCols(this, BinaryImage.Generate);
 
         public IImage<bool> DownsampleRows()
-        {
-            return ImageBase.DownsampleRows(this, BinaryImage.Generate);
-        }
+            => ImageBase.DownsampleRows(this, BinaryImage.Generate);
 
         public IImage<bool> FlipX()
-        {
-            return ImageBase.FlipX(this, BinaryImage.Generate);
-        }
+            => ImageBase.FlipX(this, BinaryImage.Generate);
 
         public IImage<bool> FlipY()
-        {
-            return ImageBase.FlipY(this, BinaryImage.Generate);
-        }
+            => ImageBase.FlipY(this, BinaryImage.Generate);
 
         public IImage<bool> FlipXY()
-        {
-            return ImageBase.FlipXY(this, BinaryImage.Generate);
-        }
+            => ImageBase.FlipXY(this, BinaryImage.Generate);
 
         public IImage<bool> Transpose()
-        {
-            return ImageBase.Transpose(this, BinaryImage.Generate);
-        }
+            => ImageBase.Transpose(this, BinaryImage.Generate);
 
         public bool this[int i, int j]
         {
@@ -207,28 +174,21 @@ namespace ImageLibrary
             }
         }
 
+        private static readonly BGRA White = new BGRA { B = 255, G = 255, R = 255, A = 255 };
+
         public void ToIndexedBgra(Action<int, BGRA> iRgba)
         {
-            BGRA white = new BGRA() { B = 255, G = 255, R = 255, A = 255 };
-            BGRA black = new BGRA() { A = 255 };
-
-            Parallel.For(0, this.length, i => iRgba(i, this[i] ? white : black));
+            Parallel.For(0, this.length, i => iRgba(i, this[i] ? White : BGRA.Black));
         }
 
         public byte[] ToBGR()
-        {
-            return ImageBase.ToRGB(this);
-        }
+            => ImageBase.ToRGB(this);
 
         public byte[] ToBGRA()
-        {
-            return ImageBase.ToRGBA(this);
-        }
+            => ImageBase.ToRGBA(this);
 
         public BGRA[] ToPixelColor()
-        {
-            return ImageBase.ToPixelColor(this);
-        }
+            => ImageBase.ToPixelColor(this);
 
         public int Length
         {
@@ -236,9 +196,7 @@ namespace ImageLibrary
         }
 
         public void CopyTo(Array array, int index)
-        {
-            ImageBase.CopyTo(this, array, index);
-        }
+            => ImageBase.CopyTo(this, array, index);
 
         public int Count
         {
@@ -261,9 +219,7 @@ namespace ImageLibrary
         }
 
         IEnumerator<bool> IEnumerable<bool>.GetEnumerator()
-        {
-            return ImageBase.GetEnumerator(this);
-        }
+            => ImageBase.GetEnumerator(this);
 
         public void Add(bool item)
         {

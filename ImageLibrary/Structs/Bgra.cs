@@ -117,7 +117,7 @@ namespace ImageLibrary
 
             if (input == null)
             {
-                throw new ArgumentNullException("input", "String input was not specified");
+                throw new ArgumentNullException(nameof(input), "String input was not specified");
             }
 
             if ((parts = input.Split(',')).Length != 4)
@@ -127,21 +127,21 @@ namespace ImageLibrary
 
             var output = new BGRA()
             {
-                R = byte.Parse(parts[0].Substring(3)),
-                G = byte.Parse(parts[1].Substring(3)),
-                B = byte.Parse(parts[2].Substring(3)),
-                A = byte.Parse(parts[3].Substring(3, parts[3].Length - 1)),
+                R = byte.Parse(parts[0].Substring(3), style, provider),
+                G = byte.Parse(parts[1].Substring(3), style, provider),
+                B = byte.Parse(parts[2].Substring(3), style, provider),
+                A = byte.Parse(parts[3].Substring(3, parts[3].Length - 1), style, provider),
             };
             
             return output;
         }
 
-        public static BGRA Parse(String input, IFormatProvider provider)
+        public static BGRA Parse(string input, IFormatProvider provider)
         {
             return Parse(input, NumberStyles.None, provider);
         }
 
-        public static BGRA Parse(String input)
+        public static BGRA Parse(string input)
         {
             return Parse(input, null);
         }

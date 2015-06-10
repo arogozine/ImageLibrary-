@@ -137,7 +137,7 @@ namespace ImageLibrary
 
         public string ToString(string format, IFormatProvider formatProvider)
         {
-            return String.Format(formatProvider, "RGB [R:{0}, G:{1}, B:{2}]", this.r, this.g, this.b);
+            return string.Format(formatProvider, "RGB [R:{0}, G:{1}, B:{2}]", this.r, this.g, this.b);
         }
     }
 }

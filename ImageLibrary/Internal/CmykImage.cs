@@ -26,74 +26,46 @@ namespace ImageLibrary
         }
 
         public IImage<CMYK> Pad(int width, int height)
-        {
-            return ImageBase.Pad(this, CmykImage.Generate, width, height);
-        }
+            => ImageBase.Pad(this, CmykImage.Generate, width, height);
 
         public IImage<CMYK> Transpose()
-        {
-            return ImageBase.Transpose(this, CmykImage.Generate);
-        }
+            => ImageBase.Transpose(this, CmykImage.Generate);
 
         private static CmykImage Generate(int width, int height, CMYK[] data)
-        {
-            return new CmykImage(width, height, data);
-        }
+            => new CmykImage(width, height, data);
 
         public IImage<CMYK> Upsample()
-        {
-            return ImageBase.Upsample(this, Generate);
-        }
+            => ImageBase.Upsample(this, Generate);
 
         public IImage<CMYK> UpsampleCols()
-        {
-            return ImageBase.UpsampleCols(this, Generate);
-        }
+            => ImageBase.UpsampleCols(this, Generate);
 
         public IImage<CMYK> UpsampleRows()
-        {
-            return ImageBase.UpsampleRows(this, Generate);
-        }
+            => ImageBase.UpsampleRows(this, Generate);
 
         public IImage<CMYK> Downsample()
-        {
-            return ImageBase.Downsample(this, Generate);
-        }
+            => ImageBase.Downsample(this, Generate);
 
         public IImage<CMYK> DownsampleCols()
-        {
-            return ImageBase.DownsampleCols(this, Generate);
-        }
+            => ImageBase.DownsampleCols(this, Generate);
 
         public IImage<CMYK> DownsampleRows()
-        {
-            return ImageBase.DownsampleRows(this, Generate); ;
-        }
-
+            => ImageBase.DownsampleRows(this, Generate);
+        
         public IImage<CMYK> FlipX()
-        {
-            return ImageBase.FlipX(this, Generate);
-        }
+            => ImageBase.FlipX(this, Generate);
 
         public IImage<CMYK> FlipY()
-        {
-            return ImageBase.FlipY(this, Generate);
-        }
+            => ImageBase.FlipY(this, Generate);
 
         public IImage<CMYK> FlipXY()
-        {
-            return ImageBase.FlipXY(this, Generate);
-        }
+            => ImageBase.FlipXY(this, Generate);
 
         public IImage<CMYK> Crop(System.Drawing.Rectangle rect)
-        {
-            return ImageBase.Crop(this, Generate, rect);
-        }
+            => ImageBase.Crop(this, Generate, rect);
 
         public IImage<CMYK> Crop(int x1, int y1, int width, int height)
-        {
-            return ImageBase.Crop(this, Generate, x1, y1, width, height);
-        }
+            => ImageBase.Crop(this, Generate, x1, y1, width, height);
 
         public int Cols
         {
@@ -157,29 +129,19 @@ namespace ImageLibrary
         }
 
         public byte[] ToBGR()
-        {
-            return ImageBase.ToRGB(this);
-        }
+            => ImageBase.ToRGB(this);
 
         public byte[] ToBGRA()
-        {
-            return ImageBase.ToRGBA(this);
-        }
+            => ImageBase.ToRGBA(this);
 
         public BGRA[] ToPixelColor()
-        {
-            return ImageBase.ToPixelColor(this);
-        }
+            => ImageBase.ToPixelColor(this);
 
         public byte[] ToImage()
-        {
-            return ImageBase.ToImage(this);
-        }
+            => ImageBase.ToImage(this);
 
         public void CopyTo(Array array, int index)
-        {
-            ImageBase.CopyTo(this, array, index);
-        }
+            => ImageBase.CopyTo(this, array, index);
 
         public int Count
         {
@@ -212,14 +174,10 @@ namespace ImageLibrary
         }
 
         public bool Contains(CMYK item)
-        {
-            return ImageBase.Contains(this, item);
-        }
+            => ImageBase.Contains(this, item);
 
         public void CopyTo(CMYK[] array, int arrayIndex)
-        {
-            ImageBase.CopyTo(this, array, arrayIndex);
-        }
+            => ImageBase.CopyTo(this, array, arrayIndex);
 
         public bool IsReadOnly
         {

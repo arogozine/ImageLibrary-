@@ -56,79 +56,51 @@ namespace ImageLibrary
                 byte g = (byte)((rgb.G - min) / scale);
                 byte b = (byte)((rgb.B - min) / scale);
 
-                iRgba(i, new BGRA() { R = r, G = g, B = b, A = byte.MaxValue });
+                iRgba(i, new BGRA { R = r, G = g, B = b, A = byte.MaxValue });
             }
         }
 
         public IImage<RGB> Pad(int width, int height)
-        {
-            return ImageBase.Pad(this, RGBImage.Generate, width, height);
-        }
+            => ImageBase.Pad(this, Generate, width, height);
 
         public IImage<RGB> Transpose()
-        {
-            return ImageBase.Transpose(this, RGBImage.Generate);
-        }
+            => ImageBase.Transpose(this, Generate);
 
         private static RGBImage Generate(int width, int height, RGB[] data)
-        {
-            return new RGBImage(width, height, data);
-        }
+            => new RGBImage(width, height, data);
 
         public IImage<RGB> Upsample()
-        {
-            return ImageBase.Upsample(this, Generate);
-        }
+            => ImageBase.Upsample(this, Generate);
 
         public IImage<RGB> UpsampleCols()
-        {
-            return ImageBase.UpsampleCols(this, Generate);
-        }
+            => ImageBase.UpsampleCols(this, Generate);
 
         public IImage<RGB> UpsampleRows()
-        {
-            return ImageBase.UpsampleRows(this, Generate);
-        }
+            => ImageBase.UpsampleRows(this, Generate);
 
         public IImage<RGB> Downsample()
-        {
-            return ImageBase.Downsample(this, Generate);
-        }
+            => ImageBase.Downsample(this, Generate);
 
         public IImage<RGB> DownsampleCols()
-        {
-            return ImageBase.DownsampleCols(this, Generate);
-        }
+            => ImageBase.DownsampleCols(this, Generate);
 
         public IImage<RGB> DownsampleRows()
-        {
-            return ImageBase.DownsampleRows(this, Generate); ;
-        }
+            => ImageBase.DownsampleRows(this, Generate);
 
         public IImage<RGB> FlipX()
-        {
-            return ImageBase.FlipX(this, Generate);
-        }
+            => ImageBase.FlipX(this, Generate);
 
         public IImage<RGB> FlipY()
-        {
-            return ImageBase.FlipY(this, Generate);
-        }
+            => ImageBase.FlipY(this, Generate);
 
         public IImage<RGB> FlipXY()
-        {
-            return ImageBase.FlipXY(this, Generate);
-        }
+            => ImageBase.FlipXY(this, Generate);
 
         public IImage<RGB> Crop(System.Drawing.Rectangle rect)
-        {
-            return ImageBase.Crop(this, Generate, rect);
-        }
+            => ImageBase.Crop(this, Generate, rect);
 
         public IImage<RGB> Crop(int x1, int y1, int width, int height)
-        {
-            return ImageBase.Crop(this, Generate, x1, y1, width, height);
-        }
+            => ImageBase.Crop(this, Generate, x1, y1, width, height);
 
         public int Cols
         {
@@ -192,24 +164,16 @@ namespace ImageLibrary
         }
 
         public byte[] ToBGR()
-        {
-            return ImageBase.ToRGB(this);
-        }
+            => ImageBase.ToRGB(this);
 
         public byte[] ToBGRA()
-        {
-            return ImageBase.ToRGBA(this);
-        }
+            => ImageBase.ToRGBA(this);
 
         public BGRA[] ToPixelColor()
-        {
-            return ImageBase.ToPixelColor(this);
-        }
+            => ImageBase.ToPixelColor(this);
 
         public void CopyTo(Array array, int index)
-        {
-            ImageBase.CopyTo(this, array, index);
-        }
+            => ImageBase.CopyTo(this, array, index);
 
         public int Count
         {
@@ -242,14 +206,10 @@ namespace ImageLibrary
         }
 
         public bool Contains(RGB item)
-        {
-            return ImageBase.Contains(this, item);
-        }
+            => ImageBase.Contains(this, item);
 
         public void CopyTo(RGB[] array, int arrayIndex)
-        {
-            ImageBase.CopyTo(this, array, arrayIndex);
-        }
+            => ImageBase.CopyTo(this, array, arrayIndex);
 
         public bool IsReadOnly
         {
@@ -262,9 +222,7 @@ namespace ImageLibrary
         }
 
         IEnumerator<RGB> IEnumerable<RGB>.GetEnumerator()
-        {
-            return ImageBase.GetEnumerator(this);
-        }
+            => ImageBase.GetEnumerator(this);
 
         public void Dispose()
         {

@@ -46,70 +46,40 @@ namespace ImageLibrary
         }
 
         public static IImage<Complex> Add(params IImage<Complex>[] images)
-        {
-            return ImageFunctions.Run((a, b) => a + b, images);
-        }
-
+            => Run((a, b) => a + b, images);
+        
         public static IImage<Complex> Subtract(params IImage<Complex>[] images)
-        {
-            return ImageFunctions.Run((a, b) => a - b, images);
-        }
+            => Run((a, b) => a - b, images);
 
         public static IImage<Complex> Divide(params IImage<Complex>[] images)
-        {
-            return ImageFunctions.Run((a, b) => a / b, images);
-        }
-
+            => Run((a, b) => a / b, images);
+        
         public static IImage<Complex> Multiply(params IImage<Complex>[] images)
-        {
-            return ImageFunctions.Run((a, b) => a * b, images);
-        }
-
+            => Run((a, b) => a * b, images);
+        
         public static IImage<double> Add(params IImage<double>[] images)
-        {
-            return ImageFunctions.Run((a, b) => a + b, images);
-        }
+            => Run((a, b) => a + b, images);
 
         public static IImage<double> Subtract(params IImage<double>[] images)
-        {
-            return ImageFunctions.Run((a, b) => a - b, images);
-        }
-
+            => Run((a, b) => a - b, images);
+        
         public static IImage<double> Divide(params IImage<double>[] images)
-        {
-            return ImageFunctions.Run((a, b) => a / b, images);
-        }
+            => Run((a, b) => a / b, images);
 
         public static IImage<double> Multiply(params IImage<double>[] images)
-        {
-            return ImageFunctions.Run((a, b) => a * b, images);
-        }
-
+            => Run((a, b) => a * b, images);
+        
         public static IImage<RGB> Add(params IImage<RGB>[] images)
-        {
-            return ImageFunctions.Run((a, b) => a + b, images);
-        }
-
-        /// <summary>
-        /// Subtracts color values of first iamge from rest
-        /// </summary>
-        /// <param name="images"></param>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <returns></returns>
+            => Run((a, b) => a + b, images);
+       
         public static IImage<RGB> Subtract(params IImage<RGB>[] images)
-        {
-            return ImageFunctions.Run((a, b) => a - b, images);
-        }
-
+            => Run((a, b) => a - b, images);
+        
         public static IImage<RGB> Divide(params IImage<RGB>[] images)
-        {
-            return ImageFunctions.Run((a, b) => a / b, images);
-        }
+            => Run((a, b) => a / b, images);
 
         public static IImage<RGB> Multiply(params IImage<RGB>[] images)
-        {
-            return ImageFunctions.Run((a, b) => a * b, images);
-        }
+            => Run((a, b) => a * b, images);
 
         private static T[] _leftToRight<T>(IImage<T>[] images)
             where T : struct, IEquatable<T>

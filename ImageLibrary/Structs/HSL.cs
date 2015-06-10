@@ -65,7 +65,7 @@ namespace ImageLibrary
 
         public string ToString(string format, IFormatProvider formatProvider)
         {
-            return String.Format(formatProvider, "HSL [H:{0}, S:{1}, L:{2}]", this.H, this.S, this.L);
+            return string.Format(formatProvider, "HSL [H:{0}, S:{1}, L:{2}]", this.H, this.S, this.L);
         }
     }
 }

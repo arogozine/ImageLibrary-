@@ -55,69 +55,43 @@ namespace ImageLibrary
         }
 
         public IImage<BGRA> Crop(System.Drawing.Rectangle rect)
-        {
-            return ImageBase.Crop(this, BgraImage.Generate, rect);
-        }
-
+            => ImageBase.Crop(this, BgraImage.Generate, rect);
+        
         public IImage<BGRA> Crop(int x1, int y1, int width, int height)
-        {
-            return ImageBase.Crop(this, BgraImage.Generate, x1, y1, width, height);
-        }
+            => ImageBase.Crop(this, BgraImage.Generate, x1, y1, width, height);
 
         public IImage<BGRA> Pad(int width, int height)
-        {
-            return ImageBase.Pad(this, BgraImage.Generate, width, height);
-        }
-
+            => ImageBase.Pad(this, BgraImage.Generate, width, height);
+        
         public IImage<BGRA> Upsample()
-        {
-            return ImageBase.Upsample(this, BgraImage.Generate);
-        }
+            => ImageBase.Upsample(this, BgraImage.Generate);
 
         public IImage<BGRA> UpsampleCols()
-        {
-            return ImageBase.UpsampleCols(this, BgraImage.Generate);
-        }
+            => ImageBase.UpsampleCols(this, BgraImage.Generate);
 
         public IImage<BGRA> UpsampleRows()
-        {
-            return ImageBase.UpsampleRows(this, BgraImage.Generate);
-        }
+            => ImageBase.UpsampleRows(this, BgraImage.Generate);
 
         public IImage<BGRA> Downsample()
-        {
-            return ImageBase.Downsample(this, BgraImage.Generate);
-        }
+            => ImageBase.Downsample(this, BgraImage.Generate);
 
         public IImage<BGRA> DownsampleCols()
-        {
-            return ImageBase.DownsampleCols(this, BgraImage.Generate);
-        }
+            => ImageBase.DownsampleCols(this, BgraImage.Generate);
 
         public IImage<BGRA> DownsampleRows()
-        {
-            return ImageBase.DownsampleRows(this, BgraImage.Generate);;
-        }
+            => ImageBase.DownsampleRows(this, BgraImage.Generate);
 
         public IImage<BGRA> FlipX()
-        {
-            return ImageBase.FlipX(this, BgraImage.Generate);
-        }
+            => ImageBase.FlipX(this, BgraImage.Generate);
 
         public IImage<BGRA> FlipY()
-        {
-            return ImageBase.FlipY(this, BgraImage.Generate);
-        }
+            => ImageBase.FlipY(this, BgraImage.Generate);
 
         public IImage<BGRA> FlipXY()
-        {
-            return ImageBase.FlipXY(this, BgraImage.Generate);
-        }
+            => ImageBase.FlipXY(this, BgraImage.Generate);
 
         public IImage<BGRA> Transpose()
-        {
-            return ImageBase.Transpose(this, BgraImage.Generate);
-        }
+            => ImageBase.Transpose(this, BgraImage.Generate);
 
         public BGRA this[int i, int j]
         {
@@ -148,10 +122,7 @@ namespace ImageLibrary
             Parallel.For(0, this.data.Length, i => iRgba(i, this.data[i]));
         }
 
-        public byte[] ToBGR()
-        {
-            return ImageBase.ToRGB(this);
-        }
+        public byte[] ToBGR() => ImageBase.ToRGB(this);
 
         unsafe public byte[] ToBGRA()
         {
@@ -172,16 +143,12 @@ namespace ImageLibrary
             return bgra;
         }
 
-        public BGRA[] ToPixelColor()
-        {
-            return ImageBase.ToPixelColor(this);
-        }
+        public BGRA[] ToPixelColor() 
+            => ImageBase.ToPixelColor(this);
 
         public void CopyTo(Array array, int index)
-        {
-            ImageBase.CopyTo(this, array, index);
-        }
-
+            => ImageBase.CopyTo(this, array, index);
+        
         public int Count
         {
             get { return this.data.Length; }
@@ -226,9 +193,7 @@ namespace ImageLibrary
         }
 
         public void CopyTo(BGRA[] array, int arrayIndex)
-        {
-            ImageBase.CopyTo(this, array, arrayIndex);
-        }
+            => ImageBase.CopyTo(this, array, arrayIndex);
 
         public bool IsReadOnly
         {
@@ -241,14 +206,10 @@ namespace ImageLibrary
         }
 
         IEnumerator<BGRA> IEnumerable<BGRA>.GetEnumerator()
-        {
-            return ImageBase.GetEnumerator(this);
-        }
+            => ImageBase.GetEnumerator(this);
 
         private static BgraImage Generate(int width, int height, BGRA[] data)
-        {
-            return new BgraImage(width, height, data);
-        }
+            => new BgraImage(width, height, data);
 
         public void Dispose()
         {

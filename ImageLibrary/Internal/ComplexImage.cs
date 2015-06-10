@@ -105,64 +105,40 @@ namespace ImageLibrary
         }
 
         private static ComplexImage Generate(int width, int height, Complex[] data)
-        {
-            return new ComplexImage(width, height, data);
-        }
+            => new ComplexImage(width, height, data);
 
         public IImage<Complex> Upsample()
-        {
-            return ImageBase.Upsample(this, Generate);
-        }
+            => ImageBase.Upsample(this, Generate);
 
         public IImage<Complex> UpsampleCols()
-        {
-            return ImageBase.UpsampleCols(this, Generate);
-        }
+            => ImageBase.UpsampleCols(this, Generate);
 
         public IImage<Complex> UpsampleRows()
-        {
-            return ImageBase.UpsampleRows(this, Generate);
-        }
+            => ImageBase.UpsampleRows(this, Generate);
 
         public IImage<Complex> Downsample()
-        {
-            return ImageBase.Downsample(this, Generate);
-        }
+            => ImageBase.Downsample(this, Generate);
 
         public IImage<Complex> DownsampleCols()
-        {
-            return ImageBase.DownsampleCols(this, Generate);
-        }
+            => ImageBase.DownsampleCols(this, Generate);
 
         public IImage<Complex> DownsampleRows()
-        {
-            return ImageBase.DownsampleRows(this, Generate); ;
-        }
+            => ImageBase.DownsampleRows(this, Generate);
 
         public IImage<Complex> FlipX()
-        {
-            return ImageBase.FlipX(this, Generate);
-        }
+            => ImageBase.FlipX(this, Generate);
 
         public IImage<Complex> FlipY()
-        {
-            return ImageBase.FlipY(this, Generate);
-        }
+            => ImageBase.FlipY(this, Generate);
 
         public IImage<Complex> FlipXY()
-        {
-            return ImageBase.FlipXY(this, Generate);
-        }
+            => ImageBase.FlipXY(this, Generate);
 
         public IImage<Complex> Crop(System.Drawing.Rectangle rect)
-        {
-            return ImageBase.Crop(this, Generate, rect);
-        }
+            => ImageBase.Crop(this, Generate, rect);
 
         public IImage<Complex> Crop(int x1, int y1, int width, int height)
-        {
-            return ImageBase.Crop(this, Generate, x1, y1, width, height);
-        }
+            => ImageBase.Crop(this, Generate, x1, y1, width, height);
 
         public int Cols
         {
@@ -225,20 +201,11 @@ namespace ImageLibrary
             }
         }
 
-        public byte[] ToBGR()
-        {
-            return ImageBase.ToRGB(this);
-        }
+        public byte[] ToBGR() => ImageBase.ToRGB(this);
 
-        public byte[] ToBGRA()
-        {
-            return ImageBase.ToRGBA(this);
-        }
+        public byte[] ToBGRA() => ImageBase.ToRGBA(this);
 
-        public BGRA[] ToPixelColor()
-        {
-            return ImageBase.ToPixelColor(this);
-        }
+        public BGRA[] ToPixelColor() => ImageBase.ToPixelColor(this);
 
         public void CopyTo(Array array, int index)
         {
@@ -296,10 +263,8 @@ namespace ImageLibrary
         }
 
         IEnumerator<Complex> IEnumerable<Complex>.GetEnumerator()
-        {
-            return ImageBase.GetEnumerator(this);
-        }
-
+            => ImageBase.GetEnumerator(this);
+        
         public void Dispose()
         {
             return;

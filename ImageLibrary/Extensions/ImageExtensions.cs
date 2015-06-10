@@ -660,7 +660,6 @@ namespace ImageLibrary.Extensions
 
         public static double[][] CentersOfMass(this IImage<double> sp1)
         {
-
             int[] r = new int[sp1.Length];
             int[] c = new int[sp1.Length];
             int[] a = new int[sp1.Length];
@@ -755,7 +754,6 @@ namespace ImageLibrary.Extensions
 
         public static int[] Areas(this IImage<double> sp1)
         {
-
             int rows = sp1.Height;
             int cols = sp1.Width;
             double[] data1 = sp1.Data;
@@ -785,9 +783,7 @@ namespace ImageLibrary.Extensions
         }
 
         public static IImage<double> Outline(this IImage<double> image)
-        {
-            return ImageExtensions.Outline(image, 1, 0);
-        }
+            => Outline(image, 1, 0);
 
         /// <summary>
         /// Returns an image where edge pixels are set to the edge value and non-edge
@@ -898,7 +894,6 @@ namespace ImageLibrary.Extensions
 
             Parallel.For(0, n, m =>
             {
-
                 for (int i = 0; i < rows; i++)
                 {
                     for (int j = 0; j < cols; j++)
@@ -950,90 +945,6 @@ namespace ImageLibrary.Extensions
 
             return sp2;
         }
-        /*
-        public static IImage<double> DistanceTransform(this IImage<double> sp1)
-        {
-            double[] kdata1 = new double[5 * 5];
-            double[] kdata2 = new double[5 * 5];
-
-            kdata1[0] = kdata2[24] = 2.8284;
-            kdata1[1] = kdata2[23] = 2.2;
-            kdata1[2] = kdata2[22] = 2.0;
-            kdata1[3] = kdata2[21] = 2.2;
-            kdata1[4] = kdata2[20] = 2.8284;
-            kdata1[5] = kdata2[19] = 2.2;
-            kdata1[6] = kdata2[18] = 1.4;
-            kdata1[7] = kdata2[17] = 1.0;
-            kdata1[8] = kdata2[16] = 1.4;
-            kdata1[9] = kdata2[15] = 2.2;
-            kdata1[10] = kdata2[14] = 2.0;
-            kdata1[11] = kdata2[13] = 1.0;
-            kdata1[12] = kdata2[12] = 0.0;
-
-            //
-            int rows = sp1.Height;
-            int cols = sp1.Width;
-            int n = (int)(Math.Sqrt(rows * rows + cols * cols) / 2.0);
-            var data1 = sp1;
-
-            IImage<Double> sp2 = sp1.Outline(0, 10 * 10 ^ 7 /* 10e7 *//*);
-            var data2 = sp2;
-
-            Parallel.For(0, n, m =>
-            {
-
-                for (int i = 0; i < rows; i++)
-                {
-                    for (int j = 0; j < cols; j++)
-                    {
-                        double sum = 10e7;
-                        for (int k = 2; k < 5; k++)
-                        {
-                            int index0 = cols * Mod(i + k - 2, rows);
-                            int index1 = 5 * k;
-                            for (int l = 0; l < 5; l++)
-                            {
-                                if (index1 + l < 12)
-                                    continue;
-
-                                double x = data2[index0 + Mod(j + l - 2, cols)] + kdata2[index1 + l];
-                                sum = Math.Min(sum, x);
-                            }
-                        }
-                        data2[cols * i + j] = sum;
-                    }
-                }
-
-                for (int i = rows - 1; i >= 0; i--)
-                {
-                    for (int j = cols - 1; j >= 0; j--)
-                    {
-                        double sum = 10e7;
-                        for (int k = 0; k < 3; k++)
-                        {
-                            int index0 = cols * Mod(i + k - 2, rows);
-                            int index1 = 5 * k;
-
-                            for (int l = 0; l < 5; l++)
-                            {
-                                if (index1 + l > 12)
-                                    break;
-
-                                double x = data2[index0 + Mod(j + l - 2, cols)] + kdata1[index1 + l];
-                                sum = sum > x ? x : sum;//Math.Min(sum, x);
-                            }
-                        }
-                        data2[cols * i + j] = sum;
-                    }
-                }
-            });
-
-            n = rows * cols;
-            for (int i = 0; i < n; i++) data2[i] *= data1[i];
-
-            return sp2;
-        }
-        */
 
         #region Convolve
 
@@ -1067,9 +978,7 @@ namespace ImageLibrary.Extensions
         /// <param name="kernel">convolution kernel</param>
         /// <returns>Convolution result</returns>
         public static IImage<double> Convolve(this IImage<double> image, double[][] kernel)
-        {
-            return Convolve(image, kernel, EdgeHandling.Crop);
-        }
+            => Convolve(image, kernel, EdgeHandling.Crop);
 
         /// <summary>
         /// Convolves the image using a specified kernel edge handling technique.
